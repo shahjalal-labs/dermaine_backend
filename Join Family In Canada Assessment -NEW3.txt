@@ -1,0 +1,1939 @@
+﻿The "Join Family in Canada FORM.
+
+MOBLIE EXPERINCE. 
+
+On the mobile whenever I enter the page the website url shows up under some of the assessment filling details. Not sure if we can fix this as this to show up some time as it is a bit distracting for the user. see screen shot for reference. 
+
+REST OF ASSESSMENT CHANGES NEEDED BELOW.
+
+
+Family connection to Canada
+To avoid anything being unclear please rename “Family connection to Canada” to “Family Member Living in Canada”. 
+To avoid further confusion change this question “What is your relationship to this person?” to “Who is this family member living in Canada?”
+Then provide the options:
+•	My spouse 
+•	My common-law partner 
+•	My conjugal partner 
+•	My parent 
+•	My grandparent 
+•	My biological child 
+•	My adopted child 
+•	My brother or sister 
+•	My aunt or uncle   
+•	My niece or nephew 
+•	Another relative 
+This makes it obvious the user is selecting who the person in Canada is.
+What is their current immigration status?
+•	Canadian Citizen 
+•	Permanent Resident 
+•	Registered Indian (ONLY DISPLAY THESE QUESTIONS IF SELECTED AND NOT THE TEMPOARY QUESTIONS)
+•	Temporary Resident – Worker (Only display temporary worker question if user selects status as worker do not display other section)
+•	Temporary Resident – Student Only display student question if user selects status as student do not display other section)
+•	Temporary Resident – Visitor Only display visitor question if user selects status as visitor do not display other section)
+•	Other Only display question if user selects status as Other 
+•	Unsure Only display question if user selects status as Unsure
+
+After changing what is your relationship to the person? To Who is this family member living in Canada? If the user selects Parent or Grandparent from the dropdown bar. 
+
+Who is this family member living in Canada?
+The selected relationship must be interpreted from the applicant’s perspective:
+•	Parent selected → the applicant is the child.
+•	Grandparent selected → the applicant is the grandchild.
+•	Biological Child or Adopted Child selected → the applicant is the parent.
+Therefore, when Parent or Grandparent is selected, do not ask:
+“Do you want to sponsor your parent or grandparent?”
+That question is reversed because the parent or grandparent is already identified as the person living in Canada.
+Do not display Parent and Grandparent Program sponsorship questions merely because the applicant selected Parent or Grandparent.
+
+
+Do you have a family member currently living in Canada?*
+
+If user says NO then the assessment should end, but give a message that the user can 
+ 
+
+
+HEADING:
+
+No Family Member Currently Living in Canada
+
+MESSAGE:
+
+"Based on your answer, this family-based assessment is not applicable to your current situation because you indicated that you do not have a family member currently living in Canada.
+
+However, you may still have other immigration options available."
+
+Then display:
+
+"Explore Other Immigration Assessments"
+
+Show three clear assessment cards/buttons:
+
+1. Apply for Permanent Residence in Canada
+   Button: "Start Permanent Residence Assessment"
+
+2. Study in Canada
+   Button: "Start Study Assessment"
+
+3. Work in Canada
+   Button: "Start Work Assessment"
+
+Each button must take the user directly to the corresponding existing assessment.
+
+Under the assessment choices display:
+
+"Not sure which assessment to choose? Start with the Permanent Residence assessment to explore your potential long-term immigration options."
+
+Do not send the user back to the homepage.
+
+Keep the user within the assessment system and provide direct buttons to the other assessments.
+ 
+1. PARENT IN CANADA — CITIZEN, PERMANENT RESIDENT OR REGISTERED INDIAN
+Display this section when:
+•	Family member living in Canada = Parent
+•	Status = Canadian Citizen, Permanent Resident, or Registered Indian
+Is your parent willing to sponsor you if you qualify?
+Add helper text.  A sponsor is at least 18 and is a Canadian citizen, permanent resident, or registered Indian under the Canadian Indian Act who legally brings a family member to live in Canada. 
+
+What is your date of birth? Can remove this what is your date of birth since user already added date of birth on profile page.
+What is your parent’s date of birth? Remove since this questions is asked on the next section.
+
+
+ 
+2. SPONSOR ELIGIBILITY — PARENT SPONSORING A DEPENDENT CHILD
+Display this section only when:
+•	Family member living in Canada = Parent
+•	Parent status = Canadian Citizen, Permanent Resident, or Registered Indian
+•	Applicant selects that they want to assess dependent-child sponsorship
+A person may generally sponsor a dependent child if the sponsor is at least 18 and is a Canadian citizen, permanent resident, or person registered under the Indian Act, subject to the other sponsorship restrictions. 
+Section title
+Parent Sponsor Eligibility
+Ask:
+What is your parent’s status in Canada?
+•	Automatically populate from the earlier answer
+•	Do not ask the user to select it again
+This section is not updated.
+ 
+Is your parent currently receiving social assistance for a reason other than disability? 
+Add helper text “Social assistance is financial or other support provided by a provincial government to help with basic living needs such as food, housing, clothing and essential expenses. It generally does not include assistance received because of a disability.
+Has your parent ever defaulted on a previous sponsorship undertaking, support payment, immigration loan or court-ordered family support?
+Add helper text. A default means failing to repay money owed for an immigration travel loan, missing court-ordered child or spousal support payments, or failing to pay back a provincial government after a previously sponsored relative went on social assistance. An active default may block a person from sponsoring, but they may become eligible again once the debt is completely paid off or if they are actively making payments under an official government repayment plan.”
+Has your parent been convicted of an offence that may prevent sponsorship? 
+Add helper text. “Certain criminal convictions can disqualify a person from sponsoring a relative. This block applies if the individual has been convicted inside or outside Canada of any sexual offence, a serious violent crime, or any offence that caused or threatened physical harm to a family member. Furthermore, if they are currently facing active charges for any of these crimes, the sponsorship application may be paused until the court case is fully resolved.”
+Is your parent willing to sign the required sponsorship undertaking?
+Add helper text: An undertaking is a mandatory binding contract with the Government of Canada where the sponsor takes full financial responsibility for a relative. This agreement ensures the relative has basic necessities like food, shelter, clothing, and health services so they do not rely on public social assistance. 
+ 
+3. PARENT IN CANADA — TEMPORARY WORKER OR TEMPORARY STUDENT
+Display condition
+Display when:
+•	Family member living in Canada = Parent
+•	Status = Temporary Resident — Worker or Temporary Resident — Student
+Are you married or in a common-law relationship?
+Add helper text: A married relationship means two people are legally joined in a marriage that is officially recognized by the law of the province or country where it took place. A common-law relationship means two people are not legally married but have lived together continuously in a marriage-like relationship for at least one full year.
+Remove the below questions since they are mentioned already in the “Which situation best describes you question already.” 
+Do you plan to: 
+•	Join your parent from outside Canada
+•	Remain with your parent while already in Canada
+•	Visit temporarily
+•	Study in Canada
+•	Unsure
+What type of authorization would you like assessed?
+•	Visitor Visa or eTA
+•	Study Permit
+•	Visitor Record, if already in Canada
+•	Independent Work Permit options
+•	Permanent Residence options
+•	All available options
+
+What is your date of birth? Can remove this what is your date of birth since user already added date of birth on profile page.
+What is your parent’s date of birth? Remove since this questions is asked on the next section.
+ 
+4. PARENT IN CANADA — VISITOR
+Display condition
+Display when:
+•	Family member living in Canada = Parent
+•	Status = Temporary Resident — Visitor
+Remove What is your date of birth?* since the user already provided their date of birth on profile section. 
+Are you married or in a common-law relationship?
+Add helper text: A married relationship means two people are legally joined in a marriage that is officially recognized by the law of the province or country where it took place. A common-law relationship means two people are not legally married but have lived together continuously in a marriage-like relationship for at least one full year.
+
+What is your date of birth? Can remove this what is your date of birth since user already added date of birth on profile page.
+What is your parent’s date of birth? Remove since this questions is asked on the next section.
+
+ 
+5. GRANDPARENT IN CANADA — CITIZEN, PERMANENT RESIDENT OR REGISTERED INDIAN
+Display condition
+Display when:
+•	Family member living in Canada = Grandparent
+•	Status = Canadian Citizen, Permanent Resident, or Registered Indian
+Remove What is your date of birth?* since the user already provided their date of birth on profile section. 
+Are you married or in a common-law relationship?
+Add helper text: A married relationship means two people are legally joined in a marriage that is officially recognized by the law of the province or country where it took place. A common-law relationship means two people are not legally married but have lived together continuously in a marriage-like relationship for at least one full year.
+Does your grandparent have any of the following living relatives they could otherwise sponsor?
+Add helper text. A sponsor is a Canadian Citizen, permanent resident, or person registered as an Indian under the Canadian Indian Act who applies to bring a family member to live in Canada. By becoming a sponsor, they sign a legally binding contract promising to financially support the relative and cover their basic needs like food, housing, and clothing so the newcomer does not have to rely on government social assistance.
+Does your grandparent have another relative in Canada who is a Canadian citizen, permanent resident, or registered Indian?
+Add helper text. A Canadian Citizen is someone born in Canada or naturalized through the immigration process. A Permanent Resident is a non-citizen immigrant who has been granted permission to live and work in Canada indefinitely with most social benefits, but without voting rights or a Canadian passport. A Registered Indian is an individual officially recognized under Canada’s Indian Act law such as a First Nations person, granting them specific legal rights and government benefits.
+ 
+6. GRANDPARENT IN CANADA — TEMPORARY WORKER, STUDENT OR VISITOR
+Display condition
+Display when:
+•	Family member living in Canada = Grandparent
+•	Status = Worker, Student, Visitor or Unsure
+Remove What is your date of birth?* since the user already provided their date of birth on profile section. 
+Remove this question below.
+What options would you like assessed?
+•	Visitor Visa or eTA
+•	Study Permit
+•	Work Permit
+•	Permanent Residence
+•	All available options
+•	Unsure
+
+What is your date of birth? Can remove this what is your date of birth since user already added date of birth on profile page.
+What is your grandparent’s date of birth? Remove since this questions is asked on the next section.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1.	BIOLOGICAL CHILD — CANADIAN CITIZEN, PERMANENT RESIDENT OR REGISTERED INDIAN 
+If:
+Family member in Canada = Biological Child
+AND their status is:
+• Canadian Citizen
+• Permanent Resident
+• Registered Indian
+Display a new section:
+PARENT OF A CANADIAN CHILD SECTION
+Has your child received an invitation to apply under the Parent and Grandparent Program?
+Add helper text. The Parent and Grandparent Program (PGP) is an immigration pathway that allows Canadian citizens and permanent residents to sponsor their own parents and grandparents for permanent residence in Canada.
+Does your child meet the applicable income requirements? 
+Add helper text. Sponsors must prove their household income meets a minimum financial cutoff based on certain tax years before applying. This required income amount changes yearly based on total household size, including the relatives being sponsored. 
+Is your child willing to provide financial support or sign the required undertaking?
+Add helper text: An undertaking is a mandatory binding contract with the Government of Canada where the sponsor takes full financial responsibility for a relative. This agreement ensures the relative has basic necessities like food, shelter, clothing, and health services so they do not rely on public social assistance. 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2.	BIOLOGICAL CHILD — TEMPORARY WORKER, TEMPORARY STUDENT OR VISITOR (No other change needed this section is ok)
+If:
+Family member in Canada = Biological Child
+AND their status is:
+• Temporary Resident — Worker
+• Temporary Resident — Student
+• Temporary Resident — Visitor
+• Unsure
+Do not display any sponsorship section.
+Display:
+PARENT OF A TEMPORARY RESIDENT IN CANADA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3.	ADOPTED CHILD — CANADIAN CITIZEN, PERMANENT RESIDENT OR REGISTERED INDIAN
+If:
+Family member in Canada = Adopted Child
+AND their status is:
+• Canadian Citizen
+• Permanent Resident
+• Registered Indian
+Display:
+PARENT OF AN ADOPTED CANADIAN CHILD
+Has your child received an invitation to apply under the Parent and Grandparent Program?
+Add helper text. The Parent and Grandparent Program (PGP) is an immigration pathway that allows Canadian citizens and permanent residents to sponsor their own parents and grandparents for permanent residence in Canada.
+Does your child meet the applicable income requirements? 
+Add helper text. Sponsors must prove their household income meets a minimum financial cutoff based on certain tax years before applying. This required income amount changes yearly based on total household size, including the relatives being sponsored. 
+Is your child willing to provide financial support or sign the required undertaking?
+Add helper text: An undertaking is a mandatory binding contract with the Government of Canada where the sponsor takes full financial responsibility for a relative. This agreement ensures the relative has basic necessities like food, shelter, clothing, and health services so they do not rely on public social assistance. 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4.	ADOPTED CHILD — TEMPORARY WORKER, TEMPORARY STUDENT OR VISITOR (No other change needed this section is ok)
+If:
+Family member in Canada = Adopted Child
+AND their status is:
+• Temporary Resident — Worker
+• Temporary Resident — Student
+• Temporary Resident — Visitor
+• Unsure
+Do not display:
+• Adopted Child Sponsorship
+• Dependent Child Sponsorship
+• Accompanying Dependent Child Assessment
+Display:
+PARENT OF AN ADOPTED TEMPORARY RESIDENT IN CANADA
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ 
+
+Spouse section is missing as well as you used the old Section that was not updated in the assessment. 
+
+In the assessment remove ALL sections from “Spousal Partner Sponsorship Logic” and replace all with the below as they were not added.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+JOIN FAMILY IN CANADA — SPOUSE 
+Family member in Canada = My Spouse, My common-law partner, My conjugal partner
+AND their status is: 
+•	Canadian citizen
+•	Permanent resident
+•	Registered Indian under the Indian Act
+1. MY SPOUSE — CANADIAN CITIZEN, PERMANENT RESIDENT OR REGISTERED INDIAN
+Are you legally married to this person?
+•	Yes
+•	No
+If Yes:
+When did you get married?
+Date field.
+In what country did your marriage take place?
+Country dropdown.
+Were both you and your spouse physically present at the marriage ceremony?
+•	Yes
+•	No
+If No:
+Why was either you or your spouse not physically present at the marriage ceremony?
+Text box.
+Is your marriage legally recognized in the country where it took place?
+•	Yes
+•	No
+•	I am not sure
+Are you and your spouse still in a genuine and continuing relationship?
+•	Yes
+•	No
+Are you currently living together?
+•	Yes
+•	No
+If Yes:
+Since what date have you been living together?
+Date field.
+If No:
+When did you last live together?
+Date field.
+Why are you currently living separately?
+•	Immigration reasons
+•	Work
+•	School
+•	Family responsibilities
+•	Financial reasons
+•	Waiting for an immigration application
+•	Travel restrictions
+•	Safety concerns
+•	We are separated
+•	Other
+When did your relationship begin?
+Date field.
+When did you first meet each other in person?
+Date field.
+Have either you or your spouse previously been married or in a common-law relationship?
+•	Yes
+•	No
+If Yes:
+Who had the previous relationship?
+•	Me
+•	My spouse
+•	Both of us
+What type of previous relationship was it?
+•	Marriage
+•	Common-law relationship
+•	Other
+When did the previous relationship end?
+Date field.
+Do you and your spouse share financial responsibilities?
+•	Yes
+•	No
+What evidence do you have of your relationship?
+Select all that apply:
+•	Photos together
+•	Travel together
+•	Messages or emails
+•	Phone or video call records
+•	Financial transfers
+•	Joint bank accounts
+•	Joint lease or mortgage
+•	Joint utility accounts
+•	Insurance or beneficiary documents
+•	Government documents showing the same address
+•	Family involvement
+•	Children together
+•	Other
+•	We have limited supporting evidence
+Sponsor Information
+How old is your spouse?
+Number field.
+Does your spouse currently live in Canada?
+•	Yes
+•	No
+If Canadian citizen and No:
+Does your spouse intend to return to Canada to live when you become a permanent resident?
+•	Yes
+•	No
+•	I am not sure
+Is your spouse currently receiving social assistance for reasons other than disability?
+•	Yes
+•	No
+•	I am not sure
+Is your spouse currently an undischarged bankrupt?
+•	Yes
+•	No
+•	I am not sure
+Has your spouse previously sponsored another spouse, common-law partner or conjugal partner? 
+Add helper text: Sponsorship is when an eligible person in Canada helps their spouse (legally married), common-law partner (lived together as a couple for at least 12 continuous months), or conjugal partner (in a committed relationship but unable to marry or live together) apply for permanent residence.
+•	Yes
+•	No
+•	I am not sure
+If Yes:
+When did the person they previously sponsored become a permanent resident?
+Date field. (optional)
+Was your spouse previously sponsored to Canada as someone else’s spouse, common-law partner or conjugal partner?
+Add helper text: Sponsorship is when an eligible person in Canada helps their spouse (legally married), common-law partner (lived together as a couple for at least 12 continuous months), or conjugal partner (in a committed relationship but unable to marry or live together) apply for permanent residence.
+•	Yes
+•	No
+•	I am not sure
+If Yes:
+When did your spouse become a permanent resident?
+Date field. (optional)
+Is your spouse currently in default of any of the following?
+Select all that apply:
+•	A previous sponsorship undertaking
+•	Court-ordered child or spousal support
+•	An immigration loan
+•	A performance bond
+•	None of the above
+•	I am not sure
+Has your spouse ever been convicted of a violent offence, sexual offence, or offence against a family member?
+•	Yes
+•	No
+•	I am not sure
+If Yes:
+Please provide brief details.
+Text box.
+Is your spouse currently in jail or prison?
+•	Yes
+•	No
+Is your spouse currently subject to a removal order from Canada?
+Add helper text:  A removal order is an official order from Canadian immigration authorities requiring a person to leave Canada. It may include a departure order, exclusion order, or deportation order.
+•	Yes
+•	No
+•	I am not sure
+Your Current Immigration Status
+Are you currently in Canada?
+•	Yes
+•	No
+If Yes:
+What is your current immigration status in Canada?
+•	Visitor
+•	Worker
+•	Student
+•	Maintained status
+•	Temporary Resident Permit holder
+•	Refugee claimant
+•	No current immigration status
+•	Restoration application pending
+•	Other
+•	I am not sure
+When does or did your current status expire?
+Date field.
+Has your spouse already submitted a sponsorship application for you?
+•	Yes
+•	No
+If Yes:
+Have you received an Acknowledgement of Receipt (AOR) from IRCC?
+Add helper text: An Acknowledgement of Receipt (AOR) is a notice from IRCC confirming that they have received your permanent residence application and created a file for processing.
+•	Yes
+•	No
+•	I am not sure
+Do you currently live at the same residential address as your spouse?
+•	Yes
+•	No
+Have you already applied for an open work permit based on your sponsorship application?
+Add helper text: An open work permit based on sponsorship may allow an eligible spouse or common-law partner in Canada to work for most employers while their permanent residence sponsorship application is being processed.
+•	Yes
+•	No
+Do you currently have a valid work permit, study permit or visitor status?
+•	Yes
+•	No
+•	I am not sure
+If No:
+Have you received approval in principle on your spousal sponsorship application?
+Add helper text: Approval in Principle means IRCC has determined that you meet the eligibility requirements to apply for permanent residence under the in-Canada spousal or common-law partner sponsorship process, although your application is not yet finally approved.
+•	Yes
+•	No
+•	I am not sure
+If applicant is outside Canada:
+What country are you currently living in?
+Country dropdown.
+What is your current immigration status in that country?
+•	Citizen
+•	Permanent resident
+•	Worker
+•	Student
+•	Visitor
+•	Other temporary resident
+•	No current legal status
+•	Other
+•	I am not sure
+Children
+Do you have any children?
+•	Yes
+•	No
+If Yes, allow the user to add each child separately.
+For each child:
+What is this child’s relationship to you?
+•	Biological child
+•	Adopted child
+•	Stepchild
+•	Other
+How old is this child?
+Number field.
+Is this child married or in a common-law relationship?
+Add helper text: A married relationship means two people are legally joined in a marriage that is officially recognized by the law of the province or country where it took place. A common-law relationship means two people are not legally married but have lived together continuously in a marriage-like relationship for at least one full year.
+•	Yes
+•	No
+If child is 22 or older:
+Has this child depended substantially on a parent for financial support since before age 22 because of a physical or mental condition?
+•	Yes
+•	No
+•	I am not sure
+What country does this child currently live in?
+Country dropdown.
+Will this child come to Canada with you?
+•	Yes
+•	No
+•	I am not sure
+ 
+2. MY COMMON-LAW PARTNER — CANADIAN CITIZEN, PERMANENT RESIDENT OR REGISTERED INDIAN
+Have you and your partner lived together in a marriage-like relationship for at least 12 consecutive months?
+•	Yes
+•	No
+•	I am not sure
+If Yes:
+When did you begin living together continuously?
+Date field.
+During those 12 months, were there any periods when you lived apart?
+•	Yes
+•	No
+If Yes:
+Approximately how long were you apart?
+Duration field.
+Why were you temporarily living apart?
+•	Work
+•	School
+•	Family responsibilities
+•	Travel
+•	Immigration restrictions
+•	Medical reasons
+•	Other
+Did your relationship continue while you were apart?
+•	Yes
+•	No
+What evidence do you have showing that you lived together?
+Select all that apply:
+•	Joint lease or mortgage
+•	Joint bank account
+•	Joint credit card
+•	Joint utility bills
+•	Government documents showing the same address
+•	Tax documents showing the same address
+•	Insurance
+•	Beneficiary designation
+•	Mail showing the same address
+•	Shared household expenses
+•	Joint purchases
+•	Other
+•	We have limited supporting documents
+When did your relationship begin?
+Date field.
+When did you first meet each other in person?
+Date field. (optional)
+Have either you or your partner previously been married or in a common-law relationship?
+
+Add helper text: A married relationship means two people are legally joined in a marriage that is officially recognized by the law of the province or country where it took place. A common-law relationship means two people are not legally married but have lived together continuously in a marriage-like relationship for at least one full year.
+•	Yes
+•	No
+If Yes:
+Who had the previous relationship?
+•	Me
+•	My partner
+•	Both of us
+What type of previous relationship was it?
+Add helper text: A married relationship means two people are legally joined in a marriage that is officially recognized by the law of the province or country where it took place. A common-law relationship means two people are not legally married but have lived together continuously in a marriage-like relationship for at least one full year.
+
+•	Marriage
+•	Common-law relationship
+•	Other
+When did the previous relationship end?
+Date field. (optional)
+Do you and your partner share financial responsibilities?
+•	Yes
+•	No
+What other evidence do you have of your relationship?
+Select all that apply:
+•	Photos together
+•	Travel together
+•	Messages or emails
+•	Phone or video calls
+•	Financial transfers
+•	Joint bank accounts
+•	Joint lease or mortgage
+•	Insurance or beneficiary documents
+•	Family involvement
+•	Children together
+•	Other
+•	We have limited supporting evidence
+Sponsor Information
+Is your partner at least 18 year or older?
+•	Yes
+•	No
+Does your partner currently live in Canada?
+•	Yes
+•	No
+If Canadian citizen and No:
+Does your partner intend to return to Canada to live when you become a permanent resident?
+•	Yes
+•	No
+•	I am not sure
+Is your partner currently receiving social assistance for reasons other than disability?
+Add helper text: Social assistance is financial or other support provided by a provincial government to help with basic living needs such as food, housing, clothing and essential expenses. It generally does not include assistance received because of a disability.
+
+
+•	Yes
+•	No
+•	I am not sure
+Is your partner currently an undischarged bankrupt? 
+Add helper text. An undischarged bankrupt is someone who has declared bankruptcy but has not been legally released (discharged) from the bankruptcy.
+•	Yes
+•	No
+•	I am not sure
+Has your partner previously sponsored another spouse, common-law partner or conjugal partner?
+Add helper text: Sponsorship is when an eligible person agrees to support their spouse (legally married), common-law partner (lived together as a couple for at least 12 continuous months), or conjugal partner (in a committed relationship but unable to marry or live together) so they can apply for permanent residence in Canada.
+•	Yes
+•	No
+•	I am not sure
+If Yes:
+When did the person they previously sponsored become a permanent resident?
+Date field.
+Was your partner previously sponsored to Canada as someone else’s spouse, common-law partner or conjugal partner?
+•	Yes
+•	No
+•	I am not sure
+If Yes:
+When did your partner become a permanent resident?
+Date field. (Optional)
+Is your partner currently in default of any of the following?
+Select all that apply:
+•	A previous sponsorship undertaking
+•	Court-ordered child or spousal support
+•	An immigration loan
+•	A performance bond
+•	None of the above
+•	I am not sure
+Has your partner ever been convicted of a violent offence, sexual offence, or offence against a family member?
+•	Yes
+•	No
+•	I am not sure
+If Yes:
+Please provide brief details.
+Text box.
+Is your partner currently in jail or prison?
+•	Yes
+•	No
+Is your partner currently subject to a removal order from Canada?
+
+Add helper text:  A removal order is an official order from Canadian immigration authorities requiring a person to leave Canada. It may include a departure order, exclusion order, or deportation order.
+
+•	Yes
+•	No
+•	I am not sure
+Your Current Immigration Status
+Are you currently in Canada?
+•	Yes
+•	No
+If Yes:
+What is your current immigration status in Canada?
+•	Visitor
+•	Worker
+•	Student
+•	Maintained status
+•	Temporary Resident Permit holder
+•	Refugee claimant
+•	No current immigration status
+•	Restoration application pending
+•	Other
+•	I am not sure
+When does or did your current status expire?
+Date field.
+Has your partner already submitted a sponsorship application for you?
+•	Yes
+•	No
+If Yes:
+Have you received an Acknowledgement of Receipt (AOR) from IRCC?
+
+Add helper text: An Acknowledgement of Receipt (AOR) is a notice from IRCC confirming that they have received your permanent residence application and created a file for processing.
+•	Yes
+•	No
+•	I am not sure
+Do you currently live at the same residential address as your partner?
+•	Yes
+•	No
+Have you already applied for an open work permit based on your sponsorship application?
+•	Yes
+•	No
+Do you currently have a valid work permit, study permit or visitor status?
+•	Yes
+•	No
+•	I am not sure
+If No:
+Have you received approval in principle on your sponsorship application?
+Add helper text: Approval in Principle (AIP) means IRCC has determined that you meet the eligibility requirements to apply for permanent residence under the in-Canada spousal or common-law partner sponsorship process, although your application is not yet finally approved.
+
+•	Yes
+•	No
+•	I am not sure
+If applicant is outside Canada:
+What country are you currently living in?
+Country dropdown.
+What is your current immigration status in that country?
+•	Citizen
+•	Permanent resident
+•	Worker
+•	Student
+•	Visitor
+•	Other temporary resident
+•	No current legal status
+•	Other
+•	I am not sure
+Children
+Do you have any children?
+•	Yes
+•	No
+If Yes, allow each child to be added separately.
+For each child:
+What is this child’s relationship to you?
+•	Biological child
+•	Adopted child
+•	Stepchild
+•	Other
+How old is this child?
+Number field.
+Is this child married or in a common-law relationship?
+
+Add helper text: Add helper text: A married relationship means two people are legally joined in a marriage that is officially recognized by the law of the province or country where it took place. A common-law relationship means two people are not legally married but have lived together continuously in a marriage-like relationship for at least one full year.
+•	Yes
+•	No
+If child is 22 or older:
+Has this child depended substantially on a parent for financial support since before age 22 because of a physical or mental condition?
+•	Yes
+•	No
+•	I am not sure
+What country does this child currently live in?
+Country dropdown.
+Will this child come to Canada with you?
+•	Yes
+•	No
+•	I am not sure
+ 
+3. MY CONJUGAL PARTNER — CANADIAN CITIZEN, PERMANENT RESIDENT OR REGISTERED INDIAN
+Are you currently living in Canada?
+•	Yes
+•	No
+Are you legally married to your partner?
+•	Yes
+•	No
+Have you and your partner ever lived together continuously for at least 12 months?
+•	Yes
+•	No
+If applicant is outside Canada:
+Have you been in a genuine conjugal relationship with your partner for at least 12 months?
+
+Add helper text. Have you been in a genuine conjugal relationship with your partner for at least 12 months?
+Add helper text. A conjugal relationship is a committed, marriage-like relationship where you and your partner have been together for at least 12 months, but serious barriers have prevented you from marrying or living together continuously.
+•	Yes
+•	No
+•	I am not sure
+Have you been able to live together continuously for at least 12 months?
+•	Yes
+•	No
+Have you been able to legally marry?
+•	Yes
+•	No
+If unable to marry or live together:
+What has prevented you from marrying or living together?
+Select all that apply:
+•	Immigration barriers
+•	Legal restrictions
+•	Religious restrictions
+•	Cultural or social restrictions
+•	Same-sex relationship restrictions
+•	Divorce is unavailable
+•	Risk of persecution
+•	Safety concerns
+•	Government restrictions
+•	Other serious circumstances
+Please briefly explain the circumstances.
+Text box.
+When did your relationship begin?
+Date field.
+When did you first meet each other in person?
+Date field.
+Have either you or your partner previously been married or in a common-law relationship?
+Add helper text: A married relationship means two people are legally joined in a marriage that is officially recognized by the law of the province or country where it took place. A common-law relationship means two people are not legally married but have lived together continuously in a marriage-like relationship for at least one full year.
+•	Yes
+•	No
+If Yes:
+Who had the previous relationship?
+•	Me
+•	My partner
+•	Both of us
+What type of relationship was it?
+Add helper text: A married relationship means two people are legally joined in a marriage that is officially recognized by the law of the province or country where it took place. A common-law relationship means two people are not legally married but have lived together continuously in a marriage-like relationship for at least one full year.
+•	Marriage
+•	Common-law relationship
+•	Other
+When did the previous relationship end?
+Date field. (optional)
+Do you and your partner share financial responsibilities?
+•	Yes
+•	No
+What evidence do you have of your relationship?
+Select all that apply:
+•	Photos together
+•	Travel together
+•	Messages or emails
+•	Phone or video calls
+•	Financial transfers
+•	Joint financial arrangements
+•	Insurance or beneficiary documents
+•	Family involvement
+•	Other
+•	We have limited supporting evidence
+Sponsor Information
+Is your partner at least 18?
+•	Yes
+•	No
+Does your partner currently live in Canada?
+•	Yes
+•	No
+If Canadian citizen and No:
+Does your partner intend to return to Canada to live when you become a permanent resident?
+•	Yes
+•	No
+•	I am not sure
+Is your partner currently receiving social assistance for reasons other than disability?
+
+Add helper text. Social assistance is financial or other support provided by a provincial government to help with basic living needs such as food, housing, clothing and essential expenses. It generally does not include assistance received because of a disability.
+•	Yes
+•	No
+•	I am not sure
+Is your partner currently an undischarged bankrupt?
+
+Add helper text. An undischarged bankrupt is someone who has declared bankruptcy but has not been legally released (discharged) from the bankruptcy. 
+
+•	Yes
+•	No
+•	I am not sure
+Has your partner previously sponsored another spouse, common-law partner or conjugal partner?
+
+Add helper tex. Add helper text. A sponsor is a Canadian Citizen, permanent resident, or person registered as an Indian under the Canadian Indian Act who applies to bring a family member to live in Canada. By becoming a sponsor, they sign a legally binding contract promising to financially support the relative and cover their basic needs like food, housing, and clothing so the newcomer does not have to rely on government social assistance.
+•	Yes
+•	No
+•	I am not sure
+If Yes:
+When did the person they sponsored become a permanent resident?
+Date field. (Optional)
+Was your partner previously sponsored to Canada as someone’s spouse, common-law partner or conjugal partner?
+•	Yes
+•	No
+•	I am not sure
+If Yes:
+When did your partner become a permanent resident?
+Date field. (Optional)
+Is your partner currently in default of any of the following?
+Select all that apply:
+•	A previous sponsorship undertaking
+•	Court-ordered child or spousal support
+•	An immigration loan
+•	A performance bond
+•	None of the above
+•	I am not sure
+Has your partner ever been convicted of a violent offence, sexual offence, or offence against a family member?
+•	Yes
+•	No
+•	I am not sure
+If Yes:
+Please provide brief details.
+Text box.
+Is your partner currently in jail or prison?
+•	Yes
+•	No
+Is your partner currently subject to a removal order from Canada?
+Add helper text:  A removal order is an official order from Canadian immigration authorities requiring a person to leave Canada. It may include a departure order, exclusion order, or deportation order.
+
+•	Yes
+•	No
+•	I am not sure
+Your Current Immigration Status
+If applicant is in Canada:
+What is your current immigration status in Canada?
+•	Visitor
+•	Worker
+•	Student
+•	Maintained status
+•	Temporary Resident Permit holder
+•	Refugee claimant
+•	No current immigration status
+•	Restoration application pending
+•	Other
+•	I am not sure
+When does or did your current status expire?
+Date field. (optional)
+If applicant is outside Canada:
+What country are you currently living in?
+Country dropdown.
+What is your current immigration status in that country?
+•	Citizen
+•	Permanent resident
+•	Worker
+•	Student
+•	Visitor
+•	Other temporary resident
+•	No current legal status
+•	Other
+•	I am not sure
+Children
+Do you have any children?
+•	Yes
+•	No
+If Yes, allow each child to be added separately.
+For each child:
+What is this child’s relationship to you?
+•	Biological child
+•	Adopted child
+•	Stepchild
+•	Other
+How old is this child?
+Number field.
+Is this child married or in a common-law relationship?
+
+Add helper text: A married relationship means two people are legally joined in a marriage that is officially recognized by the law of the province or country where it took place. A common-law relationship means two people are not legally married but have lived together continuously in a marriage-like relationship for at least one full year.
+•	Yes
+•	No
+If child is 22 or older:
+Has this child depended substantially on a parent for financial support since before age 22 because of a physical or mental condition?
+•	Yes
+•	No
+•	I am not sure
+What country does this child currently live in?
+Country dropdown.
+Will this child come to Canada with you?
+•	Yes
+•	No
+•	I am not sure
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. MY SPOUSE OR COMMON-LAW PARTNER — WORKER IN CANADA
+
+If: Family member in Canada =  is Married or Common- law partner
+AND their status is:
+• Temporary Resident — Worker
+Ask:
+Which situation best describes you?
+•	I want to visit my Spouse or Common- law partner.
+•	I want to stay with my Spouse or Common- law partner temporarily.
+•	I want to study in Canada.
+•	I want to work in Canada.
+•	I want to explore permanent residence options.
+•	I want to explore all available options.
+•	I am not sure.
+How long would you like to remain in Canada?
+•	Less than 6 months
+•	6–12 months
+•	More than 12 months
+•	Permanently, if eligible
+•	Unsure
+Is this person in Canada your:
+•	Spouse
+•	Common-law partner
+If Common-law partner:
+Have you and your partner lived together in a marriage-like relationship for at least 12 consecutive months?
+•	Yes
+•	No
+•	I am not sure
+Does your spouse or partner currently have a valid Canadian work permit?
+•	Yes
+•	No
+•	They applied to extend their work permit before it expired
+•	I am not sure
+What kind of work permit do they have?
+•	A work permit tied to one specific employer
+•	A Post-Graduation Work Permit (PGWP)
+•	An open work permit that allows them to work for most employers
+•	An employer-specific work permit supported by an LMIA
+•	An employer-specific work permit that did not require an LMIA
+•	I am not sure
+Do you know what immigration program or exemption their work permit is based on?
+•	Francophone Mobility
+•	Intra-Company Transfer
+•	CUSMA
+•	CETA
+•	International Experience Canada
+•	Provincial Nominee Program
+•	Bridging Open Work Permit
+•	Other
+•	I am not sure
+How much validity remains on their work permit?*
+Drop Down:
+•	1-6 Months
+•	6 Months to 12 Months 
+•	12 to 15 Months
+•	16 Months or more
+•	I am not sure
+
+Is your spouse employed full-time?
+Yes/No
+If yes 
+What is your spouse or partner’s current job title in Canada? 
+NOC occupation search box we have set up goes here.
+In which province or territory do they work?
+Province/territory dropdown.
+How many hours do they normally work each week?
+Number field.
+Has your spouse or partner applied for permanent residence in Canada?
+•	Yes
+•	No
+•	They are planning to apply
+•	I am not sure
+If Yes:
+Do you know which type of permanent residence application they submitted?
+•	Express Entry
+•	Provincial Nominee Program (PNP)
+•	Atlantic Immigration Program
+•	Rural Community Immigration Pilot
+•	Francophone Community Immigration Pilot
+•	Quebec immigration program
+•	Caregiver immigration program
+•	Another permanent residence program
+•	I don’t know
+If Express Entry:
+Do you know which Express Entry program they applied under?
+•	Canadian Experience Class
+•	Federal Skilled Worker Program
+•	Federal Skilled Trades Program
+•	Provincial Nominee Program through Express Entry
+•	I don’t know
+If Provincial Nominee Program:
+Which province or territory nominated them?
+Province/territory dropdown.
+•	I don’t know
+Is anything expected to change with your spouse or partner’s immigration situation soon?
+•	No
+•	They have applied for permanent residence
+•	They expect to receive permanent residence soon
+•	They received a provincial nomination
+•	They applied to extend their work permit
+•	They are changing employers
+•	Their job or occupation is changing
+•	Other
+•	I am not sure
+Your Current Immigration Status
+Are you currently in Canada?
+•	Yes
+•	No
+If Yes:
+What is your current immigration status in Canada?
+•	Visitor
+•	Worker
+•	Student
+•	Maintained status
+•	Temporary Resident Permit holder
+•	Refugee claimant
+•	No current immigration status
+•	Restoration application pending
+•	Other
+•	I am not sure
+When does or did your current status expire?
+Date field.
+If No:
+What country are you currently living in?
+Country dropdown.
+What is your current immigration status in that country?
+•	Citizen
+•	Permanent resident
+•	Worker
+•	Student
+•	Visitor
+•	Other temporary resident
+•	No current legal status
+•	Other
+•	I am not sure
+Relationship Information
+When did your relationship begin?
+Date field. (optional) 
+When did you first meet each other in person?
+Date field. (optional)
+Are you currently living together?
+•	Yes
+•	No
+If Yes:
+Since what date have you been living together?
+Date field. (optional)
+If No:
+Why are you currently living separately?
+•	Immigration reasons
+•	Work
+•	School
+•	Family responsibilities
+•	Waiting for an immigration application
+•	Other
+Do you have evidence of your relationship?
+•	Yes
+•	No
+•	Limited evidence
+Children
+Do you have any children?
+•	Yes
+•	No
+If Yes, allow each child to be added separately.
+For each child:
+What is this child’s relationship to you?
+•	Biological child
+•	Adopted child
+•	Stepchild
+•	Other
+How old is this child?
+Number field.
+Is this child married or in a common-law relationship?
+
+Add helper text: A married relationship means two people are legally joined in a marriage that is officially recognized by the law of the province or country where it took place. A common-law relationship means two people are not legally married but have lived together continuously in a marriage-like relationship for at least one full year.
+•	Yes
+•	No
+If child is 22 or older:
+Has this child depended substantially on a parent for financial support since before age 22 because of a physical or mental condition?
+•	Yes
+•	No
+•	I am not sure
+What country does this child currently live in?
+Country dropdown.
+Will this child come to Canada with you?
+•	Yes
+•	No
+•	I am not sure
+•	
+━━━━━━━━━━━━━
+5. MY SPOUSE OR COMMON-LAW PARTNER — STUDENT IN CANADA
+If: Family member in Canada =  is Married or Common- law partner
+AND their status is:
+• Temporary Resident — Student
+Ask:
+Which situation best describes you?
+•	I want to visit my Spouse or Common- law partner.
+•	I want to stay with my Spouse or Common- law partner temporarily.
+•	I want to study in Canada.
+•	I want to work in Canada.
+•	I want to explore permanent residence options.
+•	I want to explore all available options.
+•	I am not sure.
+How long would you like to remain in Canada?
+•	Less than 6 months
+•	6–12 months
+•	More than 12 months
+•	Permanently, if eligible
+•	Unsure
+Is this person in Canada your:
+•	Spouse
+•	Common-law partner
+If Common-law partner:
+Have you and your partner lived together in a marriage-like relationship for at least 12 consecutive months?
+•	Yes
+•	No
+•	I am not sure
+Does your spouse or partner currently have a valid Canadian study permit?
+•	Yes
+•	No
+•	They applied to extend their study permit before it expired
+•	I am not sure
+When does their study permit expire?
+Date field. (optional) 
+Are they currently enrolled and studying in Canada?
+•	Yes
+•	No
+Are they currently studying full-time?
+•	Yes
+•	No
+•	They are in their final academic term
+•	I am not sure
+What school or institution are they attending?
+Search/text field.
+In which province or territory is their school located?
+Province/territory dropdown.
+What type of institution are they attending?
+•	University
+•	College
+•	CEGEP
+•	Private institution
+•	Other
+•	I am not sure
+What level of program are they studying?
+•	Master’s degree
+•	Doctoral degree (PhD)
+•	Bachelor’s degree
+•	Professional university degree
+•	College diploma or certificate
+•	Other
+•	I am not sure
+If Master’s degree:
+How long is their master’s degree program in total?
+•	Less than 16 months
+•	16 to 23 months
+•	24 months or longer
+•	I am not sure
+If Professional university degree:
+Which type of professional degree are they studying?
+•	Medicine
+•	Dentistry
+•	Law
+•	Optometry
+•	Pharmacy
+•	Veterinary Medicine
+•	Nursing
+•	Education / Teaching
+•	Engineering
+•	Another professional degree
+•	I am not sure
+When did their program start?
+Date field. (optional) 
+When are they expected to complete their program?
+Date field. (optional)
+Are they currently in the final academic term of their program?
+•	Yes
+•	No
+•	I am not sure
+Is your spouse or partner expected to finish their studies within the next 12 months?
+•	Yes
+•	No
+•	I am not sure
+If Yes:
+What do they plan to do after completing their studies?
+•	Apply for a Post-Graduation Work Permit
+•	They have already applied for a Post-Graduation Work Permit
+•	Start working in Canada
+•	Apply for permanent residence
+•	Continue studying
+•	Leave Canada
+•	Other
+•	I am not sure
+Your Current Immigration Status
+Are you currently in Canada?
+•	Yes
+•	No
+If Yes:
+What is your current immigration status in Canada?
+•	Visitor
+•	Worker
+•	Student
+•	Maintained status
+•	Temporary Resident Permit holder
+•	Refugee claimant
+•	No current immigration status
+•	Restoration application pending
+•	Other
+•	I am not sure
+When does or did your current status expire?
+Date field. (optional)
+If No:
+What country are you currently living in?
+Country dropdown.
+What is your current immigration status in that country?
+•	Citizen
+•	Permanent resident
+•	Worker
+•	Student
+•	Visitor
+•	Other temporary resident
+•	No current legal status
+•	Other
+•	I am not sure
+Relationship Information
+When did your relationship begin?
+Date field. (optional)
+When did you first meet each other in person?
+Date field. (optional)
+Are you currently living together?
+•	Yes
+•	No
+If Yes:
+Since what date have you been living together?
+Date field. (optional)
+If No:
+Why are you currently living separately?
+•	Immigration reasons
+•	Work
+•	School
+•	Family responsibilities
+•	Waiting for an immigration application
+•	Other
+Do you have evidence of your relationship?
+•	Yes
+•	No
+•	Limited evidence
+Children
+Do you have any children?
+•	Yes
+•	No
+If Yes, allow each child to be added separately.
+For each child:
+What is this child’s relationship to you?
+•	Biological child
+•	Adopted child
+•	Stepchild
+•	Other
+How old is this child?
+Number field. 
+Is this child married or in a common-law relationship?
+Add helper text: A married relationship means two people are legally joined in a marriage that is officially recognized by the law of the province or country where it took place. A common-law relationship means two people are not legally married but have lived together continuously in a marriage-like relationship for at least one full year.
+•	Yes
+•	No
+If child is 22 or older:
+Has this child depended substantially on a parent for financial support since before age 22 because of a physical or mental condition?
+•	Yes
+•	No
+•	I am not sure
+What country does this child currently live in?
+Country dropdown.
+Will this child come to Canada with you?
+•	Yes
+•	No
+•	I am not sure
+
+━━━━━━━━━━━━━
+6. MY SPOUSE OR COMMON-LAW PARTNER — VISITOR IN CANADA
+If: Family member in Canada =  is Married or Common- law partner
+AND their status is:
+• Temporary Resident — Visitor
+Which situation best describes you?
+•	I want to visit my Spouse or Common-law partner.
+•	I want to stay with my Spouse or Common-law partner temporarily.
+•	I want to study in Canada.
+•	I want to work in Canada.
+•	I want to explore permanent residence options.
+•	I want to explore all available options.
+•	I am not sure.
+How long would you like to remain in Canada?
+•	Less than 6 months
+•	6–12 months
+•	More than 12 months
+•	Permanently, if eligible
+•	Unsure
+Who will pay for your trip and expenses?
+•	Myself
+•	My Spouse or Common-law partner.
+•	Shared
+•	Another person
+•	Unsure
+Do you have sufficient available funds?
+•	Yes
+•	No
+•	Unsure
+Do you have close family, employment, education, property or other obligations outside Canada?
+•	Yes
+•	No
+
+1. Universal intent question
+
+Display when the family member in Canada is:
+•	Brother or Sister 
+•	Aunt or Uncle 
+•	Niece or Nephew 
+•	Other Relative 
+Ask:
+Which situation best describes you?
+•	I want to determine whether my relative may be able to sponsor me. 
+•	I want to visit my relative in Canada. 
+•	I want to study or work in Canada near my relative. 
+•	I want to explore permanent residence options. 
+•	Family separation is causing serious hardship. 
+•	I want to explore all available options. 
+•	I am not sure. 
+Allow one selection, but the Rules Engine should still assess every relevant pathway.
+ 
+2. Canadian relative’s information
+Use the relationship and status already selected earlier. Do not ask them again.
+Ask:
+Is your relative at least 18?
+•	Yes 
+•	No 
+Does your relative currently live in Canada?
+•	Yes 
+•	No 
+Which province or territory does your relative live in?
+•	Province/territory dropdown 
+How long has your relative lived in Canada?
+•	Less than 1 year 
+•	1–3 years 
+•	3–5 years 
+•	More than 5 years 
+•	Since birth 
+•	Unsure 
+How frequently are you in contact?
+•	Daily 
+•	Several times per week 
+•	Weekly 
+•	Monthly 
+•	Occasionally 
+•	No current contact 
+When did you last see your relative in person?
+•	Less than 1 year ago 
+•	1–3 years ago 
+•	More than 3 years ago 
+•	We have never met in person 
+Does your relative provide you with financial, emotional, medical or caregiving support?
+•	Yes 
+•	No 
+If Yes:
+What type of support does your relative provide?
+•	Financial support 
+•	Housing 
+•	Emotional support 
+•	Medical support 
+•	Caregiving 
+•	Support for a child 
+•	Other 
+Please describe the support.
+ 
+3. Status-based display logic
+A. If relative’s status is:
+•	Canadian Citizen 
+•	Permanent Resident 
+•	Registered Indian 
+Display:
+Regular Relative Sponsorship Screening
+and, where appropriate:
+Humanitarian & Compassionate Family Reunification Factors
+B. If relative’s status is:
+•	Temporary Worker 
+•	Temporary Student 
+•	Visitor 
+•	Unsure 
+Do not display regular sponsorship eligibility as though the temporary resident can sponsor the applicant for permanent residence.
+Display:
+Joining or Visiting a Temporary Resident Relative
+and:
+Humanitarian & Compassionate Family Reunification Factors
+only when hardship or exceptional circumstances are identified.
+ 
+4. Brother or Sister in Canada — citizen, PR or registered Indian
+Section title
+Sibling Sponsorship and Family Reunification Screening
+Ask:
+What is your date of birth? Remove this questions since user has already answered in profile section.
+Are you under 18 years old?
+•	Yes 
+•	No 
+Are you married or in a common-law relationship?
+Add helper text: A married relationship means two people are legally joined in a marriage that is officially recognized by the law of the province or country where it took place. A common-law relationship means two people are not legally married but have lived together continuously in a marriage-like relationship for at least one full year.
+•	Yes 
+•	No 
+Are you related to your sibling by:
+•	Blood 
+•	Adoption 
+•	Half-sibling relationship 
+•	Step-sibling relationship 
+•	Other 
+•	Unsure 
+Are both of your parents deceased?
+•	Yes 
+•	No 
+If Yes:
+When did each parent pass away?
+•	Parent 1 date of death 
+•	Parent 2 date of death 
+Do you have documents confirming both deaths?
+•	Yes 
+•	No 
+•	Unsure 
+If the applicant is under 18, unmarried/not common-law, related by blood or adoption, and both parents are deceased, flag:
+Potential Orphaned Sibling Sponsorship
+These are core eligibility factors for orphaned-relative sponsorship. 
+If any core condition is not met, do not classify the applicant as eligible under the orphaned-sibling category.
+Continue to the One Other Relative Exception Screening because a different narrow pathway may still require assessment.
+ 
+5. Niece or Nephew in Canada — citizen, PR or registered Indian
+Because the niece or nephew is the person in Canada, the applicant is their aunt or uncle.
+Do not ask whether the applicant is an orphaned niece or nephew under this direction of relationship.
+Display:
+Other Relative Sponsorship Screening
+Ask the questions in the One Other Relative Exception Screening below.
+Also collect H&C factors where exceptional hardship is identified.
+ 
+6. Aunt or Uncle in Canada — citizen, PR or registered Indian
+Because the aunt or uncle is the person in Canada, the applicant is their niece or nephew.
+Display:
+Orphaned Niece or Nephew Screening
+Ask:
+What is your date of birth? Remove this questions since user has already answered in profile section.
+Are you under 18 years old?
+•	Yes 
+•	No 
+Are you married or in a common-law relationship?
+Add helper text: A married relationship means two people are legally joined in a marriage that is officially recognized by the law of the province or country where it took place. A common-law relationship means two people are not legally married but have lived together continuously in a marriage-like relationship for at least one full year.
+•	Yes 
+•	No 
+Are you related to your aunt or uncle by:
+•	Blood 
+•	Adoption 
+•	Marriage only 
+•	Other 
+•	Unsure 
+Are both of your parents deceased?
+•	Yes 
+•	No 
+If Yes:
+When did each parent pass away?
+Do you have documents confirming both deaths?
+•	Yes 
+•	No 
+•	Unsure 
+If the applicant is under 18, unmarried/not common-law, related by blood or adoption, and both parents are deceased, flag:
+Potential Orphaned Niece or Nephew Sponsorship
+If the conditions are not met, proceed to the One Other Relative Exception Screening and H&C sections rather than presenting ordinary sponsorship as available. 
+ 
+7. Other Relative in Canada — citizen, PR or registered Indian
+First ask:
+Please specify your relationship to the person in Canada
+•	Cousin 
+•	Grandchild 
+•	Great-grandparent 
+•	Great-grandchild 
+•	In-law 
+•	Step-relative 
+•	Extended family member 
+•	Other 
+Then determine whether the relationship may fit:
+•	Orphaned-relative sponsorship, where applicable 
+•	One other relative exception 
+•	No regular sponsorship category 
+•	H&C or independent immigration pathways 
+ 
+8. One Other Relative Exception Screening
+Display when the person in Canada is a:
+•	Canadian Citizen 
+•	Permanent Resident 
+•	Registered Indian 
+and the selected relationship may potentially fall within the one-other-relative category.
+About the relative in Canada
+Is your relative at least 18?
+•	Yes 
+•	No 
+•	Unsure 
+Does your relative currently live in Canada?
+•	Yes 
+•	No 
+Is your relative married or in a common-law relationship?
+•	Yes 
+•	No 
+Does your relative have any living children?
+•	Yes 
+•	No 
+Does your relative have any living parents?
+•	Yes 
+•	No 
+Does your relative have any living grandparents?
+•	Yes 
+•	No 
+Does your relative have any living brothers or sisters?
+•	Yes 
+•	No 
+Does your relative have any living aunts or uncles?
+•	Yes 
+•	No 
+Does your relative have any living nieces or nephews?
+•	Yes 
+•	No 
+Does your relative have any living relatives whom they could otherwise sponsor, including:
+•	Spouse or common-law partner 
+•	Conjugal partner 
+•	Child 
+•	Parent 
+•	Grandparent 
+•	Orphaned brother or sister 
+•	Orphaned niece or nephew 
+•	Orphaned grandchild 
+Answer:
+•	Yes 
+•	No 
+•	Unsure 
+Does your relative have any other family member in Canada who is:
+•	A Canadian citizen 
+•	A permanent resident 
+•	A person registered under the Indian Act 
+Answer:
+•	Yes 
+•	No 
+•	Unsure 
+Are you related to the person in Canada by blood or adoption?
+•	Yes 
+•	No 
+•	Unsure 
+Is the Canadian relative willing to sponsor you and sign a sponsorship undertaking?
+Add helper text. A sponsor is a Canadian Citizen, permanent resident, or person registered as an Indian under the Canadian Indian Act who applies to bring a family member to live in Canada. By becoming a sponsor, they sign a legally binding contract promising to financially support the relative and cover their basic needs like food, housing, and clothing so the newcomer does not have to rely on government social assistance.
+•	Yes 
+•	No 
+•	Unsure 
+Does the Canadian relative meet the applicable sponsorship income requirements?
+Add helper text. Some family sponsorship applications require the Canadian sponsor to meet a minimum income requirement to show they have enough income to financially support the person or relatives they are sponsoring.
+•	Yes 
+•	No 
+•	Unsure 
+Has the Canadian relative ever defaulted on a sponsorship undertaking, support obligation or immigration loan?
+Add helper text. A default means the Canadian relative did not meet certain financial obligations, such as supporting someone they previously sponsored, paying court-ordered child or spousal support, or repaying an immigration loan. A default may affect their ability to sponsor.
+•	Yes 
+•	No 
+•	Unsure 
+Is the Canadian relative receiving social assistance other than for disability?
+Add helper text. Social assistance is financial or other support provided by a provincial government to help with basic living needs such as food, housing, clothing and essential expenses. It generally does not include assistance received because of a disability.
+•	Yes 
+•	No 
+•	Unsure 
+The Rules Engine should only flag a potential one-other-relative exception where the required “no other sponsorable relatives/no qualifying relatives in Canada” conditions appear satisfied. Do not label the applicant eligible solely because the Canadian relative is unmarried. 
+ 
+9. Relative in Canada — temporary worker, student or visitor
+Display when the relative’s status is:
+•	Temporary Worker 
+•	Temporary Student 
+•	Visitor 
+•	Unsure 
+Section title
+Joining or Visiting a Temporary Resident Relative
+Ask:
+Which option best describes your goal?
+•	Visit my relative temporarily. 
+•	Stay with my relative for an extended temporary period. 
+•	Help provide care or family support. 
+•	Study in Canada. 
+•	Work in Canada. 
+•	Explore permanent residence. 
+•	Explore all available options. 
+•	Unsure. 
+How much validity remains on your relative’s temporary status?
+•	Less than 6 months 
+•	6–12 months 
+•	More than 12 months 
+•	Unsure 
+What is the main purpose of your proposed stay?
+•	Family visit 
+•	Provide temporary caregiving 
+•	Receive care or support 
+•	Attend an important family event 
+•	Tourism 
+•	Study 
+•	Work 
+•	Other 
+How long would you like to remain in Canada?
+•	Less than 6 months 
+•	6–12 months 
+•	More than 12 months 
+•	Permanently, if independently eligible 
+•	Unsure 
+Who will pay for your trip and living expenses?
+•	Myself 
+•	My relative 
+•	Shared 
+•	Another person 
+•	Unsure 
+Do you have sufficient funds?
+•	Yes 
+•	No 
+•	Unsure 
+Do you have family, employment, education, property, business or other obligations outside Canada?
+•	Yes 
+•	No 
+Do you intend to leave Canada at the end of any authorized temporary stay?
+•	Yes 
+•	No 
+•	Unsure 
+Do not show regular family sponsorship as available solely because the temporary worker, student or visitor is related to the applicant.
+ 
+10. Humanitarian & Compassionate Family Reunification Factors
+Display this section when any of the following applies:
+•	No regular sponsorship pathway appears available. 
+•	The user selects serious hardship or family separation. 
+•	A child is directly affected.
+•	The applicant is dependent on the Canadian relative. 
+•	There are medical, disability, caregiving or vulnerability concerns. 
+•	The applicant has significant establishment or ties in Canada. 
+•	The user asks to have all exceptional options assessed. 
+A. Your location and status
+Where are you currently located?
+•	In Canada 
+•	Outside Canada 
+If in Canada:
+What is your current immigration status?
+•	Citizen 
+•	Permanent resident 
+•	Worker 
+•	Student 
+•	Visitor 
+•	Refugee claimant 
+•	Temporary Resident Permit holder 
+•	No valid status 
+•	Other 
+•	Unsure 
+How long have you continuously lived in Canada?
+•	Less than 1 year 
+•	1–3 years 
+•	3–5 years 
+•	More than 5 years 
+Have you ever remained in Canada after your status expired?
+•	Yes 
+•	No 
+•	Unsure 
+Have you ever worked or studied without authorization?
+•	Yes 
+•	No 
+•	Unsure 
+Have you ever received a removal order?
+Add helper text:  A removal order is an official order from Canadian immigration authorities requiring a person to leave Canada. It may include a departure order, exclusion order, or deportation order.
+•	Yes 
+•	No 
+•	Unsure 
+If any answer is Yes:
+Please explain.
+ 
+B. Family relationship and separation
+How long have you been separated from your family member?
+•	Less than 1 year 
+•	1–3 years 
+•	3–5 years 
+•	More than 5 years 
+•	We are not currently separated 
+How close was your relationship before the separation?
+•	Extremely close 
+•	Very close 
+•	Moderately close 
+•	Limited relationship 
+•	Estranged 
+Did you previously live together?
+•	Yes 
+•	No 
+If Yes:
+For how long?
+How often do you communicate?
+•	Daily 
+•	Several times weekly 
+•	Weekly 
+•	Monthly 
+•	Occasionally 
+•	Never 
+Does the separation cause serious emotional hardship?
+•	Yes 
+•	No 
+Please explain.
+Does the separation cause serious financial hardship?
+•	Yes 
+•	No 
+Please explain.
+Has the separation affected your physical or mental health?
+•	Yes 
+•	No 
+If Yes:
+Please explain and indicate whether medical evidence is available.
+ 
+C. Dependency and support
+Do you rely on your Canadian relative for financial support?
+•	Yes 
+•	No 
+If Yes:
+How much support do you receive and how often?
+Do you rely on your Canadian relative for emotional support?
+•	Yes 
+•	No 
+Do you rely on your Canadian relative for medical care, personal care or daily assistance?
+•	Yes 
+•	No 
+Does your Canadian relative rely on you?
+•	Yes 
+•	No 
+If Yes:
+What type of support do you provide?
+•	Financial 
+•	Emotional 
+•	Medical 
+•	Personal care 
+•	Childcare 
+•	Household assistance 
+•	Other 
+Would either person be unable to obtain comparable support from another family member or service provider?
+•	Yes 
+•	No 
+•	Unsure 
+Please explain.
+ 
+D. Family support outside Canada
+Do you have a spouse or common-law partner outside Canada?
+Add helper text: A married relationship means two people are legally joined in a marriage that is officially recognized by the law of the province or country where it took place. A common-law relationship means two people are not legally married but have lived together continuously in a marriage-like relationship for at least one full year.
+•	Yes 
+•	No 
+Do you have children outside Canada?
+•	Yes 
+•	No 
+Are either or both of your parents living?
+•	Both are living 
+•	One is living 
+•	Both are deceased 
+Do you have siblings or other close relatives outside Canada?
+•	Yes 
+•	No 
+Do you have meaningful family or community support in your country of residence?
+•	Yes 
+•	No 
+•	Limited 
+Would you have safe and suitable housing there?
+•	Yes 
+•	No 
+•	Unsure 
+Would you have access to employment or financial support?
+•	Yes 
+•	No 
+•	Unsure 
+Would you have access to necessary medical treatment or caregiving?
+•	Yes 
+•	No 
+•	Unsure 
+Please explain why the available support would or would not be adequate.
+ 
+E. Best interests of children
+Are any children directly affected by the immigration decision?
+•	Yes 
+•	No 
+If Yes, repeat for each child:
+•	Child’s date of birth 
+•	Relationship to applicant 
+•	Country of residence 
+•	Immigration status 
+•	Who currently cares for the child 
+•	Whether the child lives with the applicant or Canadian relative 
+•	Length of separation from the applicant or relative 
+Is the child negatively affected emotionally by the separation?
+•	Yes 
+•	No 
+•	Unsure 
+Is the child’s education affected?
+•	Yes 
+•	No 
+•	Unsure 
+Does the child have medical, developmental or special needs?
+•	Yes 
+•	No 
+Would reunification provide greater stability, care or protection?
+•	Yes 
+•	No 
+•	Unsure 
+Would removal from Canada, refusal or continued separation disrupt the child’s primary caregiving arrangement?
+•	Yes 
+•	No 
+•	Unsure 
+Please explain why the child’s best interests support or do not support reunification in Canada.
+IRCC considers the age, establishment, education, medical needs and country conditions affecting children directly impacted by an H&C decision. 
+ 
+F. Medical, disability and vulnerability factors
+Do you or Canadian relative have a serious medical condition?
+•	Yes 
+•	No 
+Do you or Canadian relative have a physical or mental disability?
+•	Yes 
+•	No 
+Is treatment or necessary support available in your country of residence?
+•	Yes 
+•	No 
+•	Limited 
+•	Unsure 
+Is the Canadian relative your primary caregiver or support person?
+•	Yes 
+•	No 
+Are you the Canadian relative’s primary caregiver?
+•	Yes 
+•	No 
+Would separation cause a serious interruption in treatment, care or personal safety?
+•	Yes 
+•	No 
+•	Unsure 
+Please explain and identify available supporting evidence.
+ 
+G. Conditions and hardship outside Canada
+Would you face any of the following if required to remain in or return to their country?
+Select all that apply:
+•	Serious financial hardship 
+•	Homelessness or inadequate housing 
+•	Lack of family support 
+•	Lack of necessary medical care 
+•	Discrimination 
+•	Gender-based hardship 
+•	Family violence 
+•	Disability-related hardship 
+•	Inability to care for or reunite with a child 
+•	Unsafe or unstable country conditions 
+•	Other exceptional hardship 
+•	None 
+Please explain each selected factor.
+Do not present general inconvenience, ordinary family separation or a preference to live in Canada as automatically sufficient for H&C relief.
+ 
+H. Establishment and ties to Canada
+Display fully when the applicant is in Canada.
+How long have you lived in Canada?
+Are you employed or self-employed in Canada?
+•	Yes 
+•	No 
+Are you studying in Canada?
+•	Yes 
+•	No 
+Do you volunteer or participate in a religious, cultural or community organization?
+•	Yes 
+•	No 
+Do you own or rent a home in Canada?
+•	Own 
+•	Rent 
+•	Neither 
+Do you pay taxes in Canada?
+•	Yes 
+•	No 
+•	Not applicable 
+Do you have close friends or extended family in Canada?
+•	Yes 
+•	No 
+Have you demonstrated compliance with Canadian laws and immigration requirements?
+•	Yes 
+•	No 
+•	Some concerns 
+•	Unsure 
+Please describe your establishment and community ties in Canada.
+ 
+I. Alternatives and practical barriers
+Can you and your Canadian relative maintain your relationship through visits?
+•	Yes 
+•	No 
+•	Only with serious difficulty 
+Can the Canadian relative travel to your country?
+•	Yes 
+•	No 
+•	Only with serious difficulty 
+If not, why?
+•	Medical limitation 
+•	Financial limitation 
+•	Employment responsibilities 
+•	Childcare responsibilities 
+•	Immigration restriction 
+•	Safety concern 
+•	Disability 
+•	Other 
+Could another regular immigration pathway reasonably allow reunification?
+•	Yes 
+•	No 
+•	Unsure 
+Have you previously applied under another immigration category?
+•	Yes 
+•	No 
+If Yes:
+What was the outcome?
+What exceptional circumstances make the regular immigration process inadequate in this case?
+Free-text field.
+ 
+11. Final explanation
+Ask:
+Please explain all exceptional circumstances supporting family reunification
+Include:
+•	Why the relationship is significant. 
+•	Why continued separation causes more than ordinary hardship. 
+•	Who depends on whom and why. 
+•	How children are affected. 
+•	Medical or caregiving needs. 
+•	Why alternatives are inadequate. 
+•	What evidence is available. 
+Large text field.
+

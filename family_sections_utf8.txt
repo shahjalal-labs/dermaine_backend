@@ -1,0 +1,363 @@
+﻿=== GROUPS ===
+6a8e70ec5d3c43abdbf6b249 affected_children_1787719916359 affected children repeatable: true
+6a9fcba504ea094707c6da7a children Children Information repeatable: true
+
+=== QUESTIONS BY SECTION ===
+
+--- Section: PERSONAL (10 questions) ---
+  [order 1] (TEXT) Full Name
+  [order 2] (EMAIL) Email Address
+  [order 3] (NUMBER) Telephone Number
+  [order 4] (DATE) Date Of Birth
+  [order 5] (SELECT) Gender (options: Male, Female, Other)
+  [order 6] (SELECT) Marital Status (options: Never Married / Single, Married, Divorced, Legally Separated, Common Law, Annulled Marriage, Widowed)
+  [order 7] (SELECT) Country of Citizenship
+  [order 8] (SELECT) Current Country of Residence
+  [order 9] (BOOLEAN) Has multiple citizenship
+  [order 10] (MULTI_SELECT) All citizenships [depends on Has multiple citizenship IS_TRUE null]
+
+--- Section: FAMILY_MEMBER_LIVING_IN_CANADA (4 questions) ---
+  [order 11] (BOOLEAN) Do you have a family member currently living in Canada?
+  [order 12] (SELECT) Who is this family member living in Canada? (options: My spouse, My common-law partner, My conjugal partner, My parent, My grandparent, My biological child, My adopted child, My brother or sister, My aunt or uncle, My niece or nephew, Another relative) [depends on Do you have a family member currently living in Canada? IS_TRUE null]
+  [order 13] (SELECT) What is their current immigration status? (options: Canadian Citizen, Permanent Resident, Registered Indian, Temporary Resident ΓÇô Worker, Temporary Resident ΓÇô Student, Temporary Resident ΓÇô Visitor, Other, Unsure) [depends on Do you have a family member currently living in Canada? IS_TRUE null]
+  [order 14] (SELECT) Which province do they live in? (options: Alberta, British Columbia, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Ontario, Prince Edward Island, Quebec, Saskatchewan, Northwest Territories, Nunavut, Yukon) [depends on Do you have a family member currently living in Canada? IS_TRUE null]
+
+--- Section: CHILD_OF_A_CANADIAN_CITIZEN_OR_PERMANENT_RESIDENT (11 questions) ---
+  [order 15] (SELECT) Which situation best describes you? (options: I want to determine whether my parent can sponsor me as a dependent child., I want to visit my parent in Canada., I want to study in Canada near my parent., I want to work in Canada., I want to explore all immigration options available to me., I am not sure.) [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 16] (NUMBER) What is your age? [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 17] (BOOLEAN) Are you married or in a common-law relationship? [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 18] (SELECT) Are you the biological or adopted child of the parent living in Canada? (options: Biological Child, Adopted Child) [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 19] (SELECT) Are you financially dependent on your parent? (options: Yes, No, Partially, Unsure) [depends on What is your age? LESS_THAN 22]
+  [order 20] (SELECT) Have you depended substantially on your parent for financial support since before you turned 22? (options: Yes, No, Unsure) [depends on What is your age? GREATER_THAN_OR_EQUAL 22]
+  [order 21] (SELECT) Are you unable to financially support yourself because of a physical or mental condition? (options: Yes, No, Unsure) [depends on What is your age? GREATER_THAN_OR_EQUAL 22]
+  [order 22] (TEXTAREA) Please briefly explain the condition and how it affects your ability to be financially independent [depends on Are you unable to financially support yourself because of a physical or mental condition? IN_LIST ["yes"]]
+  [order 24] (BOOLEAN) Does your parent currently live in Canada? [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 25] (SELECT) Which province or territory does your parent live in? (options: Alberta, British Columbia, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Ontario, Prince Edward Island, Quebec, Saskatchewan, Northwest Territories, Nunavut, Yukon) [depends on Does your parent currently live in Canada? IS_TRUE null]
+  [order 26] (SELECT) Is your parent willing to sponsor you if you qualify? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_parent]
+
+--- Section: PARENT_SPONSOR_ELIGIBILITY (9 questions) ---
+  [order 27] (SELECT) What is your parentΓÇÖs status in Canada? (options: need to updated) [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 28] (SELECT) Is your parent at least 18 years old? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 29] (BOOLEAN) Does your parent currently live in Canada? [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 30] (SELECT) Does your parent intend to live in Canada when you become a permanent resident? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 31] (SELECT) Is your parent currently receiving social assistance for a reason other than disability? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 32] (SELECT) Has your parent ever defaulted on a previous sponsorship undertaking, support payment, immigration loan or court-ordered family support? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 33] (SELECT) Is your parent currently in prison, subject to a removal order, or an undischarged bankrupt? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 34] (SELECT) Has your parent been convicted of an offence that may prevent sponsorship? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 35] (SELECT) Is your parent willing to sign the required sponsorship undertaking? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_parent]
+
+--- Section: CHILD_OF_A_TEMPORARY_WORKER_OR_STUDENT_IN_CANADA (11 questions) ---
+  [order 36] (SELECT) Which situation best describes you? (options: I want to accompany or join my parent in Canada., I want to visit my parent., I want to study in Canada., I want to explore work or permanent residence options., I want to explore all available options., I am not sure.) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 37] (NUMBER) What is your age? [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 38] (BOOLEAN) Are you married or in a common-law relationship? [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 39] (SELECT) Are you financially dependent on your parent? (options: Yes, No, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 40] (SELECT) Have you depended on your parent financially since before turning 22? (options: Yes, No, Unsure) [depends on What is your age? GREATER_THAN_OR_EQUAL 22]
+  [order 41] (SELECT) Are you unable to financially support yourself because of a physical or mental condition? (options: Yes, No, Unsure) [depends on What is your age? GREATER_THAN_OR_EQUAL 22]
+  [order 42] (BOOLEAN) Is your parent currently in Canada? [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 43] (SELECT) How much validity remains on your parentΓÇÖs permit? (options: Less than 6 months, 6-12 months, More than 12 months, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 44] (SELECT) Which province or territory does your parent live in? (options: Alberta, British Columbia, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Ontario, Prince Edward Island, Quebec, Saskatchewan, Northwest Territories, Nunavut, Yukon) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 45] (SELECT) Do you plan to: (options: Join your parent from outside Canada, Remain with your parent while already in Canada, Visit temporarily, Study in Canada, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 46] (SELECT) What type of authorization would you like assessed? (options: Visitor Visa or eTA, Study Permit, Visitor Record, if already in Canada, Independent Work Permit options, Permanent Residence options, All available options, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+
+--- Section: JOINING_OR_VISITING_A_PARENT_IN_CANADA (7 questions) ---
+  [order 47] (SELECT) Which situation best describes you? (options: I want to visit my parent in Canada., I want to study in Canada., I want to explore work opportunities., I want to explore permanent residence options., I want to explore all options., I am not sure.) [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 49] (BOOLEAN) Are you married or in a common-law relationship? [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 50] (SELECT) How long would you like to remain in Canada? (options: Less than 6 months , 6ΓÇô12 months, More than 12 months, Permanently, if eligible, Unsure) [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 51] (SELECT) Who will pay for your trip and living expenses? (options: Myself, My Parents, Shared, Another Person, Unsure) [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 52] (SELECT) Do you have sufficient funds? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 53] (BOOLEAN) Do you have family, employment, education, property or other obligations outside Canada? [depends on Who is this family member living in Canada? EQUALS my_parent]
+  [order 54] (SELECT) Do you intend to leave Canada at the end of your authorized stay? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_parent]
+
+--- Section: GRANDCHILD_OF_A_CANADIAN_CITIZEN_OR_PERMANENT_RESIDENT (9 questions) ---
+  [order 55] (SELECT) Which situation best describes you? (options: I want to determine whether my grandparent may be able to sponsor me., I want to visit my grandparent., I want to study or work in Canada., I want to explore permanent residence options., I want to explore all available options., I am not sure.) [depends on Who is this family member living in Canada? EQUALS my_grandparent]
+  [order 57] (BOOLEAN) Are you married or in a common-law relationship? [depends on Who is this family member living in Canada? EQUALS my_grandparent]
+  [order 58] (SELECT) Are you biologically or legally related to the grandparent? (options: Biological grandchild, Adopted grandchild, Step-grandchild, Other, Unsure) [depends on Who is this family member living in Canada? EQUALS my_grandparent]
+  [order 59] (BOOLEAN) Are both of your parents deceased? [depends on Who is this family member living in Canada? EQUALS my_grandparent]
+  [order 60] (SELECT) Were both parents deceased before you turned 18? (options: Yes, No, Unsure) [depends on Are both of your parents deceased? IS_TRUE null]
+  [order 61] (BOOLEAN) Are you currently under 18? [depends on Who is this family member living in Canada? EQUALS my_grandparent]
+  [order 62] (SELECT) Does your grandparent have any of the following living relatives they could otherwise sponsor? (options: Spouse or common-law partner, Child, Parent, Grandparent, Brother or sister, Uncle or aunt, Nephew or niece, None, Unsure) [depends on Who is this family member living in Canada? EQUALS my_grandparent]
+  [order 63] (SELECT) Does your grandparent have another relative in Canada who is a Canadian citizen, permanent resident, or registered Indian? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_grandparent]
+  [order 64] (SELECT) Is your grandparent willing to sponsor you if a qualifying pathway exists? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_grandparent]
+
+--- Section: JOINING_OR_VISITING_A_GRANDPARENT_IN_CANADA (5 questions) ---
+  [order 65] (SELECT) Which situation best describes you? (options: I want to visit my grandparent., I want to stay with my grandparent temporarily., I want to study in Canada., I want to work in Canada., I want to explore permanent residence options., I want to explore all available options., I am not sure.) [depends on Who is this family member living in Canada? EQUALS my_grandparent]
+  [order 67] (SELECT) How long would you like to remain in Canada? (options: Less than 6 months, 6-12 months, More than 12 months, Permanently, if eligible, Unsure) [depends on Who is this family member living in Canada? EQUALS my_grandparent]
+  [order 68] (SELECT) Who will pay for your trip and expenses? (options: Myself, My grandparent, Shared, Another person, Unsure) [depends on Who is this family member living in Canada? EQUALS my_grandparent]
+  [order 69] (SELECT) Do you have sufficient available funds? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_grandparent]
+  [order 70] (BOOLEAN) Do you have close family, employment, education, property or other obligations outside Canada? [depends on Who is this family member living in Canada? EQUALS my_grandparent]
+
+--- Section: PARENT_OF_A_CANADIAN_CHILD (14 questions) ---
+  [order 72] (SELECT) Which situation best describes you? (options: I want to visit my child in Canada, I want to determine whether my child can sponsor me, I want to explore all immigration options available to me, I am not sure) [depends on Who is this family member living in Canada? EQUALS my_biological_child]
+  [order 73] (SELECT) What is your primary goal? (options: Permanent residence through the Parent and Grandparent Program, Super Visa, Visitor Visa, Other permanent residence options, Work or study options, Explore all available options, Unsure) [depends on Who is this family member living in Canada? EQUALS my_biological_child]
+  [order 74] (DATE) What is your childΓÇÖs date of birth?  [depends on Who is this family member living in Canada? EQUALS my_biological_child]
+  [order 75] (BOOLEAN) Is your child at least 18 years old? [depends on Who is this family member living in Canada? EQUALS my_biological_child]
+  [order 76] (BOOLEAN) Does your child currently live in Canada? [depends on Who is this family member living in Canada? EQUALS my_biological_child]
+  [order 77] (SELECT) Which province or territory does your child live in?  (options: Alberta, British Columbia, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Ontario, Prince Edward Island, Quebec, Saskatchewan, Northwest Territories, Nunavut, Yukon) [depends on Who is this family member living in Canada? EQUALS my_biological_child]
+  [order 78] (SELECT) Has your child received an invitation to apply under the Parent and Grandparent Program? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_biological_child]
+  [order 79] (SELECT) Does your child meet the applicable income requirements? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_biological_child]
+  [order 80] (SELECT) Is your child willing to provide financial support or sign the required undertaking? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_biological_child]
+  [order 81] (SELECT) How long would you like to stay in Canada? (options: Less than 6 months, More than 6 months, Extended visits, Permanently, if eligible, Unsure) [depends on Who is this family member living in Canada? EQUALS my_biological_child]
+  [order 82] (SELECT) Who will pay for your trip or living expenses? (options: Myself, My Child, Shared between us, Another Person, Unsure) [depends on Who is this family member living in Canada? EQUALS my_biological_child]
+  [order 83] (SELECT) Do you have sufficient funds for your intended stay? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_biological_child]
+  [order 84] (BOOLEAN) Do you have family, employment, property, business or other obligations outside Canada? [depends on Who is this family member living in Canada? EQUALS my_biological_child]
+  [order 85] (TEXTAREA) Please describe your ties outside Canada. [depends on Do you have family, employment, property, business or other obligations outside Canada? IS_TRUE null]
+
+--- Section: PARENT_OF_A_TEMPORARY_RESIDENT_IN_CANADA (13 questions) ---
+  [order 86] (SELECT) Which situation best describes you? (options: I want to visit my child in Canada, I want to stay with my child for an extended period, I want to help my child or care for grandchildren, I want to explore all immigration options available to me, I am not sure) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 87] (SELECT) How much validity remains on your childΓÇÖs temporary status? (options: Less than 6 months, 6 to 12 months, More than 12 months, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 88] (BOOLEAN) Does your child currently live in Canada? [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 89] (SELECT) Which province or territory does your child live in? (options: Alberta, British Columbia, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Ontario, Prince Edward Island, Quebec, Saskatchewan, Northwest Territories, Nunavut, Yukon) [depends on Does your child currently live in Canada? IS_TRUE null]
+  [order 90] (SELECT) What is the main purpose of your proposed stay? (options: Visit family, Help care for grandchildren, Provide temporary family support, Tourism, Explore future immigration opportunities, Other) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 91] (SELECT) How long would you like to remain in Canada? (options: Less than 6 months, 6 to 12 months, More than 12 months, Permanently, if eligible, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 92] (SELECT) What type of option would you like the system to assess?   (options: Visitor Visa or eTA, Work Permit, Study Permit, Permanent Residence, All available options, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 93] (SELECT) Who will pay for your trip and living expenses? (options: Myself, My Child, Shared between us, Another Person, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 94] (SELECT) Do you have sufficient available funds? (options: Yes, No, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 95] (SELECT) Are you currently: (options: Employed, Self-Employed, Retired, Unemployed, Other) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 96] (BOOLEAN) Do you own property, a business or other assets outside Canada? [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 97] (BOOLEAN) Do you have close family or other obligations outside Canada? [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 98] (SELECT) Do you intend to leave Canada at the end of any authorized temporary stay? (options: Yes, No, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+
+--- Section: PARENT_OF_AN_ADOPTED_CANADIAN_CHILD (18 questions) ---
+  [order 99] (SELECT) Which situation best describes you? (options: I want to visit my child in Canada, I want to determine whether my child can sponsor me, I want to explore all immigration options available to me, I am not sure) [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 100] (SELECT) What is your primary goal? (options: Permanent residence through the Parent and Grandparent Program, Super Visa, Visitor Visa, Other permanent residence options, Work or study options, Explore all available options, Unsure) [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 101] (DATE) What is your childΓÇÖs date of birth? [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 102] (BOOLEAN) Is your child at least 18 years old? [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 103] (BOOLEAN) Does your child currently live in Canada? [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 104] (SELECT) Which province or territory does your child live in? (options: Alberta, British Columbia, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Ontario, Prince Edward Island, Quebec, Saskatchewan, Northwest Territories, Nunavut, Yukon) [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 105] (SELECT) Has your child received an invitation to apply under the Parent and Grandparent Program? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 106] (SELECT) Does your child meet the applicable income requirements (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 107] (SELECT) Is your child willing to provide financial support or sign the required undertaking? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 108] (SELECT) How long would you like to stay in Canada? (options: Less than 6 months, More than 6 months, Extended visits, Permanently, if eligible, Unsure) [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 109] (SELECT) Who will pay for your trip or living expenses? (options: Myself, My Child, Shared between us, Another Person, Unsure) [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 110] (SELECT) Do you have sufficient funds for your intended stay (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 111] (BOOLEAN) Do you have family, employment, property, business or other obligations outside Canada? [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 112] (TEXTAREA) Please describe your ties outside Canada [depends on Do you have family, employment, property, business or other obligations outside Canada? IS_TRUE null]
+  [order 113] (SELECT) Has the adoption been legally completed? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 114] (SELECT) In which country was the adoption completed? [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 115] (SELECT) Is the adoption legally recognized in the country where it occurred? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+  [order 116] (SELECT) Do you have legal documentation confirming the parent-child relationship? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_adopted_child]
+
+--- Section: MY_SPOUSE_CANADIAN_CITIZEN_OR_PR (51 questions) ---
+  [order 100] (BOOLEAN) Are you legally married to this person? [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 101] (DATE) When did you get married? [depends on Are you legally married to this person? IS_TRUE null]
+  [order 102] (SELECT) In what country did your marriage take place? [depends on Are you legally married to this person? IS_TRUE null]
+  [order 103] (BOOLEAN) Were both you and your spouse physically present at the marriage ceremony? [depends on Are you legally married to this person? IS_TRUE null]
+  [order 104] (TEXTAREA) Why was either you or your spouse not physically present at the marriage ceremony? [depends on Were both you and your spouse physically present at the marriage ceremony? IS_FALSE null]
+  [order 105] (SELECT) Is your marriage legally recognized in the country where it took place? (options: Yes, No, I am not sure) [depends on Are you legally married to this person? IS_TRUE null]
+  [order 106] (BOOLEAN) Are you and your spouse still in a genuine and continuing relationship? [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 107] (BOOLEAN) Are you currently living together? [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 108] (DATE) Since what date have you been living together? [depends on Are you currently living together? IS_TRUE null]
+  [order 109] (DATE) When did you last live together? [depends on Are you currently living together? IS_FALSE null]
+  [order 110] (SELECT) Why are you currently living separately? (options: Immigration reasons, Work, School, Family responsibilities, Financial reasons, Waiting for an immigration application, Travel restrictions, Safety concerns, We are separated, Other) [depends on Are you currently living together? IS_FALSE null]
+  [order 111] (DATE) When did your relationship begin? [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 112] (DATE) When did you first meet each other in person? [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 113] (BOOLEAN) Have either you or your spouse previously been married or in a common-law relationship? [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 114] (SELECT) Who had the previous relationship? (options: Me, My spouse, Both of us) [depends on Have either you or your spouse previously been married or in a common-law relationship? IS_TRUE null]
+  [order 115] (SELECT) What type of previous relationship was it? (options: Marriage, Common-law relationship, Other) [depends on Have either you or your spouse previously been married or in a common-law relationship? IS_TRUE null]
+  [order 116] (DATE) When did the previous relationship end? [depends on Have either you or your spouse previously been married or in a common-law relationship? IS_TRUE null]
+  [order 117] (BOOLEAN) Do you and your spouse share financial responsibilities? [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 118] (MULTI_SELECT) What evidence do you have of your relationship? (options: Photos together, Travel together, Messages or emails, Phone or video call records, Financial transfers, Joint bank accounts, Joint lease or mortgage, Joint utility accounts, Insurance or beneficiary documents, Government documents showing the same address, Family involvement, Children together, Other, We have limited supporting evidence) [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 119] (NUMBER) How old is your spouse? [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 120] (BOOLEAN) Does your spouse currently live in Canada? [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 121] (SELECT) Does your spouse intend to return to Canada to live when you become a permanent resident? (options: Yes, No, I am not sure) [depends on Does your spouse currently live in Canada? IS_FALSE null]
+  [order 122] (SELECT) Is your spouse currently receiving social assistance for reasons other than disability? (options: Yes, No, I am not sure) [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 123] (SELECT) Is your spouse currently an undischarged bankrupt? (options: Yes, No, I am not sure) [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 124] (SELECT) Has your spouse previously sponsored another spouse, common-law partner or conjugal partner? (options: Yes, No, I am not sure) [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 125] (DATE) When did the person they previously sponsored become a permanent resident? [depends on Has your spouse previously sponsored another spouse, common-law partner or conjugal partner? EQUALS yes]
+  [order 126] (SELECT) Was your spouse previously sponsored to Canada as someone elseΓÇÖs spouse, common-law partner or conjugal partner? (options: Yes, No, I am not sure) [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 127] (DATE) When did your spouse become a permanent resident? [depends on Was your spouse previously sponsored to Canada as someone elseΓÇÖs spouse, common-law partner or conjugal partner? EQUALS yes]
+  [order 128] (MULTI_SELECT) Is your spouse currently in default of any of the following? (options: A previous sponsorship undertaking, Court-ordered child or spousal support, An immigration loan, A performance bond, None of the above, I am not sure) [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 129] (SELECT) Has your spouse ever been convicted of a violent offence, sexual offence, or offence against a family member? (options: Yes, No, I am not sure) [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 130] (TEXTAREA) Please provide brief details of the offence. [depends on Has your spouse ever been convicted of a violent offence, sexual offence, or offence against a family member? EQUALS yes]
+  [order 131] (BOOLEAN) Is your spouse currently in jail or prison? [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 132] (SELECT) Is your spouse currently subject to a removal order from Canada? (options: Yes, No, I am not sure) [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 133] (BOOLEAN) Are you currently in Canada? [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 134] (SELECT) What is your current immigration status in Canada? (options: Visitor, Worker, Student, Maintained status, Temporary Resident Permit holder, Refugee claimant, No current immigration status, Restoration application pending, Other, I am not sure) [depends on Are you currently in Canada? IS_TRUE null]
+  [order 135] (DATE) When does or did your current status expire? [depends on Are you currently in Canada? IS_TRUE null]
+  [order 136] (BOOLEAN) Has your spouse already submitted a sponsorship application for you? [depends on Are you currently in Canada? IS_TRUE null]
+  [order 137] (SELECT) Have you received an Acknowledgement of Receipt (AOR) from IRCC? (options: Yes, No, I am not sure) [depends on Has your spouse already submitted a sponsorship application for you? IS_TRUE null]
+  [order 138] (BOOLEAN) Do you currently live at the same residential address as your spouse? [depends on Are you currently in Canada? IS_TRUE null]
+  [order 139] (BOOLEAN) Have you already applied for an open work permit based on your sponsorship application? [depends on Are you currently in Canada? IS_TRUE null]
+  [order 140] (SELECT) Do you currently have a valid work permit, study permit or visitor status? (options: Yes, No, I am not sure) [depends on Are you currently in Canada? IS_TRUE null]
+  [order 141] (SELECT) Have you received approval in principle on your spousal sponsorship application? (options: Yes, No, I am not sure) [depends on Do you currently have a valid work permit, study permit or visitor status? EQUALS no]
+  [order 142] (SELECT) What country are you currently living in? [depends on Are you currently in Canada? IS_FALSE null]
+  [order 143] (SELECT) What is your current immigration status in that country? (options: Citizen, Permanent resident, Worker, Student, Visitor, Other temporary resident, No current legal status, Other, I am not sure) [depends on Are you currently in Canada? IS_FALSE null]
+  [order 144] (BOOLEAN) Do you have any children? [depends on Who is this family member living in Canada? EQUALS my_spouse]
+  [order 145] (SELECT) What is this childΓÇÖs relationship to you? (options: Biological child, Adopted child, Stepchild, Other)
+  [order 146] (NUMBER) How old is this child?
+  [order 147] (BOOLEAN) Is this child married or in a common-law relationship?
+  [order 148] (SELECT) Has this child depended substantially on a parent for financial support since before age 22 because of a physical or mental condition? (options: Yes, No, I am not sure)
+  [order 149] (SELECT) What country does this child currently live in?
+  [order 150] (SELECT) Will this child come to Canada with you? (options: Yes, No, I am not sure)
+
+--- Section: PARENT_OF_AN_ADOPTED_TEMPORARY_RESIDENT_IN_CANADA (17 questions) ---
+  [order 117] (SELECT) Which situation best describes you? (options: I want to visit my child in Canada, I want to stay with my child for an extended period, I want to help my child or care for grandchildren, I want to explore all immigration options available to me, I am not sure) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 118] (SELECT) How much validity remains on your childΓÇÖs temporary status? (options: Less than 6 months, 6 to 12 months, More than 12 months, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 119] (BOOLEAN) Does your child currently live in Canada? [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 120] (SELECT) Which province or territory does your child live in? (options: Alberta, British Columbia, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Ontario, Prince Edward Island, Quebec, Saskatchewan, Northwest Territories, Nunavut, Yukon) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 121] (SELECT) What is the main purpose of your proposed stay? (options: Visit family, Help care for grandchildren, Provide temporary family support, Tourism, Explore future immigration opportunities, Other) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 122] (SELECT) How long would you like to remain in Canada? (options: Less than 6 months, 6 to 12 months, More than 12 months, Permanently, if eligible, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 123] (SELECT) What type of option would you like the system to assess? (options: Visitor Visa or eTA, Work Permit, Study Permit, Permanent Residence, All available options, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 124] (SELECT) Who will pay for your trip and living expenses? (options: Myself, My Child, Shared between us, Another person, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 125] (SELECT) Do you have sufficient available funds? (options: Yes, No, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 126] (SELECT) Are you currently: (options: Employed, Self-employed, Retired, Unemployed, Other) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 127] (BOOLEAN) Do you own property, a business or other assets outside Canada? [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 128] (BOOLEAN) Do you have close family or other obligations outside Canada? [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 129] (SELECT) Do you intend to leave Canada at the end of any authorized temporary stay? (options: Yes, No, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 130] (SELECT) Has the adoption been legally completed? (options: Yes, No, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 131] (SELECT) In which country was the adoption completed? [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 132] (SELECT) Is the adoption legally recognized? (options: Yes, No, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 133] (SELECT) Do you have documents confirming the legal parent-child relationship? (options: Yes, No, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+
+--- Section: SIBLING_SPONSORSHIP_AND_FAMILY_REUNIFICATION_SCREENING (7 questions) ---
+  [order 171] (BOOLEAN) Are you under 18 years old? [depends on Who is this family member living in Canada? EQUALS my_brother_or_sister]
+  [order 172] (BOOLEAN) Are you married or in a common-law relationship? [depends on Who is this family member living in Canada? EQUALS my_brother_or_sister]
+  [order 173] (SELECT) Are you related to your sibling by: (options: Blood, Adoption, Half-sibling relationship, Step-sibling relationship, Other) [depends on Who is this family member living in Canada? EQUALS my_brother_or_sister]
+  [order 174] (BOOLEAN) Are both of your parents deceased? [depends on Who is this family member living in Canada? EQUALS my_brother_or_sister]
+  [order 175] (DATE) When did your parent pass away? [depends on Are both of your parents deceased? IS_TRUE null]
+  [order 176] (DATE) When did his parent pass away? [depends on Are both of your parents deceased? IS_TRUE null]
+  [order 177] (SELECT) Do you have documents confirming both deaths? (options: Yes, No, Unsure) [depends on Are both of your parents deceased? IS_TRUE null]
+
+--- Section: ORPHANED_NIECE_OR_NEPHEW_SCREENING (8 questions) ---
+  [order 179] (BOOLEAN) Are you under 18 years old? [depends on Who is this family member living in Canada? EQUALS my_niece_or_nephew]
+  [order 180] (BOOLEAN) Are you married or in a common-law relationship? [depends on Who is this family member living in Canada? EQUALS my_niece_or_nephew]
+  [order 181] (SELECT) Are you related to your aunt or uncle by: (options: Blood, Adoption, Marriage Only, Other) [depends on Who is this family member living in Canada? EQUALS my_niece_or_nephew]
+  [order 182] (BOOLEAN) Are both of your parents deceased? [depends on Who is this family member living in Canada? EQUALS my_niece_or_nephew]
+  [order 183] (DATE) When did your parent pass away? [depends on Are both of your parents deceased? IS_TRUE null]
+  [order 184] (DATE) When did his parent pass away? [depends on Are both of your parents deceased? IS_TRUE null]
+  [order 185] (SELECT) Do you have documents confirming both deaths? (options: Yes, No, Unsure) [depends on Are both of your parents deceased? IS_TRUE null]
+  [order 193] (SELECT) Do you intend to leave Canada at the end of any authorized temporary stay? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS my_niece_or_nephew]
+
+--- Section: JOINING_OR_VISITING_A_TEMPORARY_RESIDENT_RELATIVE (7 questions) ---
+  [order 186] (SELECT) Which option best describes your goal? (options: Visit my relative temporarily., Stay with my relative for an extended temporary period., Help provide care or family support., Study in Canada., Work in Canada., Explore permanent residence., Explore all available options., Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_visitor]
+  [order 187] (SELECT) How much validity remains on your relativeΓÇÖs temporary status? (options: Less than 6 months, 6-12 months, More than 12 months, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_visitor]
+  [order 188] (SELECT) What is the main purpose of your proposed stay? (options: Family visit, Provide temporary caregiving, Receive care or support, Attend an important family event, Tourism, Study, Work, Other) [depends on What is their current immigration status? EQUALS temporary_resident_visitor]
+  [order 189] (SELECT) How long would you like to remain in Canada? (options: Less than 6 months, 6-12 months, More than 12 months, Permanently, if independently eligible, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_visitor]
+  [order 190] (SELECT) Who will pay for your trip and living expenses? (options: Myself, My Relative, Shared, Another person, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_visitor]
+  [order 191] (SELECT) Do you have sufficient funds? (options: Yes, No, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_visitor]
+  [order 192] (BOOLEAN) Do you have family, employment, education, property, business or other obligations outside Canada? [depends on What is their current immigration status? EQUALS temporary_resident_visitor]
+
+--- Section: HUMANITARIAN_COMPASSIONATE_FAMILY_REUNIFICATION_FACTORS (74 questions) ---
+  [order 186] (BOOLEAN) Are you currently located in Canada?
+  [order 187] (SELECT) What is your current immigration status? (options: Citizen, Permanent resident, Worker, Student, Visitor, Refugee claimant, Temporary Resident Permit holder, No valid status, Other, Unsure) [depends on Are you currently located in Canada? IS_TRUE null]
+  [order 188] (SELECT) How long have you continuously lived in Canada? (options: Less than 1 year, 1-3 years, 3-5 years, More than 5 years)
+  [order 189] (SELECT) Have you ever remained in Canada after your status expired? (options: Yes, No, Unsure)
+  [order 190] (SELECT) Have you ever worked or studied without authorization? (options: Yes, No, Unsure)
+  [order 191] (SELECT) Have you ever received a removal order? (options: Yes, No, Unsure)
+  [order 192] (TEXTAREA) Please explain the reason of removal. [depends on Have you ever received a removal order? EQUALS yes]
+  [order 193] (SELECT) How long have you been separated from your family member? (options: Less than 1 year, 1-3 years, 3-5 years, More than 5 years, We are not currently separated)
+  [order 194] (SELECT) How close was your relationship before the separation? (options: Extremely close, Very close, Moderately close, Limited relationship, Estranged)
+  [order 195] (BOOLEAN) Did you previously live together?
+  [order 196] (SELECT) For how long? (options: Less than 6 months, More than 6 months, 1 year, 2 Year) [depends on Did you previously live together? IS_TRUE null]
+  [order 197] (SELECT) How often do you communicate? (options: Daily, Several times weekly, Weekly, Monthly, Occasionally, Never)
+  [order 198] (BOOLEAN) Does the separation cause serious emotional hardship?
+  [order 199] (TEXTAREA) Please explain the emotional hardship [depends on Does the separation cause serious emotional hardship? IS_TRUE null]
+  [order 200] (BOOLEAN) Does the separation cause serious financial hardship?
+  [order 201] (TEXTAREA) Please explain the financial hardship [depends on Does the separation cause serious financial hardship? IS_TRUE null]
+  [order 202] (BOOLEAN) Has the separation affected your physical or mental health?
+  [order 203] (TEXTAREA) Please explain and indicate whether medical evidence is available. [depends on Has the separation affected your physical or mental health? IS_TRUE null]
+  [order 204] (BOOLEAN) Do you rely on your Canadian relative for financial support?
+  [order 205] (TEXT) How much support do you receive and how often? [depends on Do you rely on your Canadian relative for financial support? IS_TRUE null]
+  [order 206] (BOOLEAN) Do you rely on your Canadian relative for emotional support?
+  [order 207] (BOOLEAN) Do you rely on your Canadian relative for medical care, personal care or daily assistance?
+  [order 208] (BOOLEAN) Does your Canadian relative rely on you?
+  [order 209] (SELECT) What type of support do you provide? (options: Financial, Emotional, Medical, Personal Care, Childcare, Household assistance , Other) [depends on Does your Canadian relative rely on you? IS_TRUE null]
+  [order 210] (SELECT) Would either person be unable to obtain comparable support from another family member or service provider? (options: Yes, No, Unsure)
+  [order 211] (TEXTAREA) Please explain why comparable support is unavailable. [depends on Would either person be unable to obtain comparable support from another family member or service provider? EQUALS yes]
+  [order 212] (BOOLEAN) Do you have a spouse or common-law partner outside Canada?
+  [order 213] (BOOLEAN) Do you have children outside Canada?
+  [order 214] (SELECT) Are either or both of your parents living? (options: Both are living, One is living, Both are deceased)
+  [order 215] (BOOLEAN) Do you have siblings or other close relatives outside Canada?
+  [order 216] (SELECT) Do you have meaningful family or community support in your country of residence? (options: Yes, No, Limited)
+  [order 217] (SELECT) Would you have safe and suitable housing there? (options: Yes, No, Unsure)
+  [order 218] (SELECT) Would you have access to employment or financial support? (options: Yes, No, Unsure)
+  [order 219] (SELECT) Would you have access to necessary medical treatment or caregiving? (options: Yes, No, Unsure)
+  [order 220] (TEXTAREA) Please explain why the available support would or would not be adequate [depends on Would you have access to necessary medical treatment or caregiving? IN_LIST ["no","unsure"]]
+  [order 222] (BOOLEAN) Are any children directly affected by the immigration decision?
+  [order 223] (DATE) ChildΓÇÖs date of birth  [depends on Are any children directly affected by the immigration decision? IS_TRUE null]
+  [order 224] (SELECT) Relationship to applicant  (options: Parent, Child, Brother, Sister, Grandparent, Friend) [depends on Are any children directly affected by the immigration decision? IS_TRUE null]
+  [order 224] (SELECT) Country of residence  [depends on Are any children directly affected by the immigration decision? IS_TRUE null]
+  [order 225] (SELECT) Immigration status  (options: Canadian Citizen, Permanent Residence, Study Permit, Work Permit, Visiting Visa) [depends on Are any children directly affected by the immigration decision? IS_TRUE null]
+  [order 226] (SELECT) Who currently cares for the child  (options: No One, Mother, Father, Grandparent, Unsure) [depends on Are any children directly affected by the immigration decision? IS_TRUE null]
+  [order 227] (BOOLEAN) Whether the child lives with the applicant or Canadian relative  [depends on Are any children directly affected by the immigration decision? IS_TRUE null]
+  [order 228] (SELECT) Length of separation from the applicant or relative  (options: Less than 6 months, More than 6 months, 1 year, 2 Year, 3 Year) [depends on Are any children directly affected by the immigration decision? IS_TRUE null]
+  [order 229] (SELECT) Is the child negatively affected emotionally by the separation? (options: Yes, No, Unsure) [depends on Are any children directly affected by the immigration decision? IS_TRUE null]
+  [order 230] (SELECT) Is the childΓÇÖs education affected? (options: Yes, No, Unsure) [depends on Are any children directly affected by the immigration decision? IS_TRUE null]
+  [order 231] (BOOLEAN) Does the child have medical, developmental or special needs? [depends on Are any children directly affected by the immigration decision? IS_TRUE null]
+  [order 232] (SELECT) Would reunification provide greater stability, care or protection? (options: Yes, No, Unsure) [depends on Are any children directly affected by the immigration decision? IS_TRUE null]
+  [order 233] (SELECT) Would removal, refusal or continued separation disrupt the childΓÇÖs primary caregiving arrangement? (options: Yes, No, Unsure) [depends on Are any children directly affected by the immigration decision? IS_TRUE null]
+  [order 234] (TEXTAREA) Please explain why the childΓÇÖs best interests support or do not support reunification in Canada. [depends on Are any children directly affected by the immigration decision? IS_TRUE null]
+  [order 235] (BOOLEAN) Does the applicant or Canadian relative have a serious medical condition?
+  [order 236] (BOOLEAN) Does either person have a physical or mental disability?
+  [order 237] (SELECT) Is treatment or necessary support available in the applicantΓÇÖs country of residence? (options: Yes, No, Limited, Unsure)
+  [order 238] (BOOLEAN) Is the Canadian relative the applicantΓÇÖs primary caregiver or support person?
+  [order 239] (BOOLEAN) Is the applicant the Canadian relativeΓÇÖs primary caregiver?
+  [order 240] (SELECT) Would separation cause a serious interruption in treatment, care or personal safety? (options: Yes, No, Unsure)
+  [order 241] (TEXTAREA) Please explain and identify available supporting evidence.
+  [order 242] (MULTI_SELECT) Would the applicant face any of the following if required to remain in or return to their country? (options: Serious financial hardship, Homelessness or inadequate housing, Lack of family support, Lack of necessary medical care, Discrimination, Gender-based hardship, Family violence, Disability-related hardship, Inability to care for or reunite with a child, Unsafe or unstable country conditions, Other exceptional hardship)
+  [order 243] (TEXTAREA) Please explain each selected factor
+  [order 244] (SELECT) How long has the applicant lived in Canada? (options: Less than 6 months, More than 6 months, 1 year, 2 year, 3 year, 5+ year)
+  [order 245] (BOOLEAN) Is the applicant employed or self-employed in Canada?
+  [order 246] (BOOLEAN) Is the applicant studying in Canada?
+  [order 247] (BOOLEAN) Does the applicant volunteer or participate in a religious, cultural or community organization?
+  [order 248] (SELECT) Does the applicant own or rent a home in Canada? (options: Own, Rent, Neither)
+  [order 249] (SELECT) Does the applicant pay taxes in Canada? (options: Yes, No, Not applicable )
+  [order 250] (BOOLEAN) Does the applicant have close friends or extended family in Canada?
+  [order 251] (SELECT) Has the applicant demonstrated compliance with Canadian laws and immigration requirements? (options: Yes, No, Some concerns, Unsure)
+  [order 252] (TEXTAREA) Please describe the applicantΓÇÖs establishment and community ties.
+  [order 253] (SELECT) Can the applicant and Canadian relative maintain their relationship through visits? (options: Yes, No, Only with serious difficulty )
+  [order 254] (SELECT) Can the Canadian relative travel to the applicantΓÇÖs country? (options: Yes, No, Only with serious difficulty )
+  [order 255] (SELECT) If not, why? (options: Medical limitation, Financial limitation, Employment responsibilities, Childcare responsibilities, Immigration restriction, Safety concern, Disability, Other) [depends on Can the Canadian relative travel to the applicantΓÇÖs country? EQUALS no]
+  [order 256] (SELECT) Could another regular immigration pathway reasonably allow reunification? (options: Yes, No, Unsure)
+  [order 257] (BOOLEAN) Has the applicant previously applied under another immigration category?
+  [order 258] (TEXT) What was the outcome? [depends on Has the applicant previously applied under another immigration category? IS_TRUE null]
+  [order 259] (TEXT) What exceptional circumstances make the regular immigration process inadequate in this case? [depends on Has the applicant previously applied under another immigration category? IS_TRUE null]
+
+--- Section: MY_COMMON_LAW_PARTNER_CANADIAN_CITIZEN_OR_PR (7 questions) ---
+  [order 200] (SELECT) Have you and your partner lived together in a marriage-like relationship for at least 12 consecutive months? (options: Yes, No, I am not sure) [depends on Who is this family member living in Canada? EQUALS my_common_law_partner]
+  [order 201] (DATE) When did you begin living together continuously? [depends on Have you and your partner lived together in a marriage-like relationship for at least 12 consecutive months? EQUALS yes]
+  [order 202] (BOOLEAN) During those 12 months, were there any periods when you lived apart? [depends on Have you and your partner lived together in a marriage-like relationship for at least 12 consecutive months? EQUALS yes]
+  [order 203] (TEXT) Approximately how long were you apart? [depends on During those 12 months, were there any periods when you lived apart? IS_TRUE null]
+  [order 204] (SELECT) Why were you temporarily living apart? (options: Work, School, Family responsibilities, Travel, Immigration restrictions, Medical reasons, Other) [depends on During those 12 months, were there any periods when you lived apart? IS_TRUE null]
+  [order 205] (BOOLEAN) Did your relationship continue while you were apart? [depends on During those 12 months, were there any periods when you lived apart? IS_TRUE null]
+  [order 206] (MULTI_SELECT) What evidence do you have showing that you lived together? (options: Joint lease or mortgage, Joint bank account, Joint credit card, Joint utility bills, Government documents showing the same address, Tax documents showing the same address, Insurance, Beneficiary designation, Mail showing the same address, Shared household expenses, Joint purchases, Other, We have limited supporting documents) [depends on Who is this family member living in Canada? EQUALS my_common_law_partner]
+
+--- Section: MY_CONJUGAL_PARTNER_CANADIAN_CITIZEN_OR_PR (5 questions) ---
+  [order 300] (BOOLEAN) Are you currently living in Canada? [depends on Who is this family member living in Canada? EQUALS my_conjugal_partner]
+  [order 301] (BOOLEAN) Are you legally married to your partner? [depends on Who is this family member living in Canada? EQUALS my_conjugal_partner]
+  [order 302] (BOOLEAN) Have you and your partner ever lived together continuously for at least 12 months? [depends on Who is this family member living in Canada? EQUALS my_conjugal_partner]
+  [order 303] (MULTI_SELECT) What has prevented you from marrying or living together? (options: Immigration barriers, Legal restrictions, Religious restrictions, Cultural or social restrictions, Same-sex relationship restrictions, Divorce is unavailable, Risk of persecution, Safety concerns, Government restrictions, Other serious circumstances) [depends on Who is this family member living in Canada? EQUALS my_conjugal_partner]
+  [order 304] (TEXTAREA) Please briefly explain the circumstances that prevent marriage or cohabitation. [depends on Who is this family member living in Canada? EQUALS my_conjugal_partner]
+
+--- Section: SPOUSE_OR_PARTNER_OF_WORKER_IN_CANADA (9 questions) ---
+  [order 400] (SELECT) Which situation best describes you? (options: I want to visit my Spouse or Common-law partner., I want to stay with my Spouse or Common-law partner temporarily., I want to study in Canada., I want to work in Canada., I want to explore permanent residence options., I want to explore all available options., I am not sure.) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 401] (SELECT) How long would you like to remain in Canada? (options: Less than 6 months, 6ΓÇô12 months, More than 12 months, Permanently, if eligible, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 402] (SELECT) Does your spouse or partner currently have a valid Canadian work permit? (options: Yes, No, They applied to extend their work permit before it expired, I am not sure) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 403] (SELECT) What kind of work permit do they have? (options: A work permit tied to one specific employer, A Post-Graduation Work Permit (PGWP), An open work permit that allows them to work for most employers, An employer-specific work permit supported by an LMIA, An employer-specific work permit that did not require an LMIA, I am not sure) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 404] (SELECT) How much validity remains on their work permit? (options: 1-6 Months, 6 Months to 12 Months, 12 to 15 Months, 16 Months or more, I am not sure) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 405] (BOOLEAN) Is your spouse employed full-time? [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 406] (TEXT) What is your spouse or partnerΓÇÖs current job title in Canada? [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 407] (SELECT) In which province or territory do they work? (options: Alberta, British Columbia, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Ontario, Prince Edward Island, Quebec, Saskatchewan, Northwest Territories, Nunavut, Yukon) [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+  [order 408] (NUMBER) How many hours do they normally work each week? [depends on What is their current immigration status? EQUALS temporary_resident_worker]
+
+--- Section: SPOUSE_OR_PARTNER_OF_STUDENT_IN_CANADA (4 questions) ---
+  [order 500] (SELECT) Does your spouse or partner currently have a valid Canadian study permit? (options: Yes, No, They applied to extend their study permit before it expired, I am not sure) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 501] (SELECT) Are they currently studying full-time? (options: Yes, No, They are in their final academic term, I am not sure) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 502] (SELECT) What type of institution are they attending? (options: University, College, CEGEP, Private institution, Other, I am not sure) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+  [order 503] (SELECT) What level of program are they studying? (options: MasterΓÇÖs degree, Doctoral degree (PhD), BachelorΓÇÖs degree, Professional university degree, College diploma or certificate, Other, I am not sure) [depends on What is their current immigration status? EQUALS temporary_resident_student]
+
+--- Section: SPOUSE_OR_PARTNER_OF_VISITOR_IN_CANADA (2 questions) ---
+  [order 600] (SELECT) Do you have sufficient available funds for your stay in Canada? (options: Yes, No, Unsure) [depends on What is their current immigration status? EQUALS temporary_resident_visitor]
+  [order 601] (BOOLEAN) Do you have close family, employment, education, property or other obligations outside Canada? [depends on What is their current immigration status? EQUALS temporary_resident_visitor]
+
+--- Section: ONE_OTHER_RELATIVE_EXCEPTION (10 questions) ---
+  [order 700] (BOOLEAN) Is your relative married or in a common-law relationship? [depends on Who is this family member living in Canada? EQUALS another_relative]
+  [order 701] (BOOLEAN) Does your relative have any living children? [depends on Who is this family member living in Canada? EQUALS another_relative]
+  [order 702] (BOOLEAN) Does your relative have any living parents? [depends on Who is this family member living in Canada? EQUALS another_relative]
+  [order 703] (BOOLEAN) Does your relative have any living grandparents? [depends on Who is this family member living in Canada? EQUALS another_relative]
+  [order 704] (BOOLEAN) Does your relative have any living brothers or sisters? [depends on Who is this family member living in Canada? EQUALS another_relative]
+  [order 705] (SELECT) Does your relative have any living relatives whom they could otherwise sponsor (spouse, child, parent, grandparent, or orphaned relative)? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS another_relative]
+  [order 706] (SELECT) Does your relative have any other family member in Canada who is a Canadian citizen, permanent resident, or registered Indian? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS another_relative]
+  [order 707] (SELECT) Are you related to the person in Canada by blood or adoption? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS another_relative]
+  [order 708] (SELECT) Is the Canadian relative willing to sponsor you and sign a sponsorship undertaking? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS another_relative]
+  [order 709] (SELECT) Does the Canadian relative meet the applicable sponsorship income requirements? (options: Yes, No, Unsure) [depends on Who is this family member living in Canada? EQUALS another_relative]

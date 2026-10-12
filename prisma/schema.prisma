@@ -1,0 +1,660 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ============================================================
+// UNCHANGED MODELS (rewritten as-is, nothing needed updating)
+// ============================================================
+
+model User {
+  id                  String               @id @default(auto()) @map("_id") @db.ObjectId
+  organizationId      String?              @db.ObjectId
+  fullName            String
+  email               String               @unique
+  password            String
+  profileImage        String?
+  phoneNumber         String?
+  gender              Gender?
+  address             String?
+  role                UserRole
+  stripeCustomerId    String?
+  isGoogleLogin       Boolean              @default(false)
+  status              UserStatus           @default(Active)
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  organization        Organization?        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  supports            Support[]
+  organizationMembers OrganizationMember[]
+  availabilities      Availability[]
+  consultations       Consultation[]
+
+  @@map("users")
+}
+
+model Otp {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  otp       String
+  expiresAt DateTime
+}
+
+model Availability {
+  id        String          @id @default(auto()) @map("_id") @db.ObjectId
+  workerId  String          @db.ObjectId
+  dayOfWeek Int
+  slots     AvailableSlot[]
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+  user      User            @relation(fields: [workerId], references: [id], onDelete: Cascade)
+
+  @@map("availabilities")
+}
+
+model AvailableSlot {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  availabilityId String       @db.ObjectId
+  startTime      String
+  availability   Availability @relation(fields: [availabilityId], references: [id], onDelete: Cascade)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@map("availableSlots")
+}
+
+model Support {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId        String   @db.ObjectId
+  message       String
+  adminResponse String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("supports")
+}
+
+model Assesment {
+  id                    String                 @id @default(auto()) @map("_id") @db.ObjectId
+  title                 String                 @unique
+  assessmentType        AssessmentType?
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  questions             Question[]
+  questionGroups        QuestionGroup[]
+  programs              Program[]
+  assessmentSubmissions AssessmentSubmission[]
+
+  @@map("assesments")
+}
+
+model Question {
+  id           String            @id @default(auto()) @map("_id") @db.ObjectId
+  questionId   String
+  questionText String
+  inputType    QuestionInputType
+  questionType String
+  order        Int               @default(0)
+  assesmentId  String            @db.ObjectId
+  assesment    Assesment         @relation(fields: [assesmentId], references: [id], onDelete: Cascade)
+  options      QuestionOption[]
+
+  // ---- Grouping / repeatable sections ----
+  groupId String?        @db.ObjectId
+  group   QuestionGroup? @relation(fields: [groupId], references: [id], onDelete: SetNull)
+
+  // ---- Conditional display ----
+  dependsOnQuestionId String?       @db.ObjectId
+  dependsOnQuestion   Question?     @relation("QuestionDependency", fields: [dependsOnQuestionId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  dependentQuestions  Question[]    @relation("QuestionDependency")
+  dependsOnOperator   RuleOperator?
+  dependsOnValue      String?
+
+  // ---- Country shortcut for SELECT/MULTI_SELECT ----
+  isCountry  Boolean            @default(false)
+  isOptional Boolean            @default(false)
+  helpText   String?
+  answers    AssessmentAnswer[]
+  createdAt  DateTime           @default(now())
+  updatedAt  DateTime           @updatedAt
+
+  @@unique([assesmentId, questionId])
+  @@map("questions")
+}
+
+model QuestionGroup {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  assesmentId String    @db.ObjectId
+  assesment   Assesment @relation(fields: [assesmentId], references: [id], onDelete: Cascade)
+
+  groupKey     String // stable key for frontend, e.g. "experience"
+  title        String // e.g. "Work Experience"
+  isRepeatable Boolean @default(false)
+  minInstances Int     @default(0)
+  maxInstances Int? // null = unlimited
+  order        Int     @default(0)
+
+  questions Question[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([assesmentId, groupKey])
+  @@map("question_groups")
+}
+
+model AssessmentSubmission {
+  id          String             @id @default(auto()) @map("_id") @db.ObjectId
+  applicantId String
+  assesmentId String             @db.ObjectId
+  assesment   Assesment          @relation(fields: [assesmentId], references: [id], onDelete: Cascade)
+  status      SubmissionStatus   @default(IN_PROGRESS)
+  submittedAt DateTime?
+  answers     AssessmentAnswer[]
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  @@index([applicantId, assesmentId])
+  @@map("assessment_submissions")
+}
+
+model AssessmentAnswer {
+  id           String               @id @default(auto()) @map("_id") @db.ObjectId
+  submissionId String               @db.ObjectId
+  submission   AssessmentSubmission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  questionId   String               @db.ObjectId
+  question     Question             @relation(fields: [questionId], references: [id])
+  value        Json
+  createdAt    DateTime             @default(now())
+  updatedAt    DateTime             @updatedAt
+
+  @@unique([submissionId, questionId])
+  @@map("assessment_answers")
+}
+
+model QuestionOption {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  label    String
+  value    String
+  helpText String?
+
+  questionId String   @db.ObjectId
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@map("question_options")
+}
+
+model Organization {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  slug           String   @unique
+  type           String
+  status         String
+  plan           String
+  billingEmail   String   @unique
+  billingName    String
+  password       String?
+  maxUsers       Int
+  maxAssessments Int
+  maxReports     Int
+  companyName    String
+  notes          String
+  token          String?
+  isSetup        Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organizationMembers OrganizationMember[]
+  users               User[]
+
+  @@map("organizations")
+}
+
+model PendingAdmin {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  adminName String
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("pending_admins")
+}
+
+model OrganizationMember {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId         String?  @db.ObjectId
+  organizationId String   @db.ObjectId
+  email          String   @unique
+  fullName       String
+  role           UserRole
+  status         String
+  token          String?
+  isSetup        Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user         User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@map("organization_members")
+}
+
+// ============================================================
+// PROGRAM — mostly unchanged. Only fix: status now uses its own
+// enum instead of reusing StreamStatus (that reuse was confusing —
+// a Program's status options shouldn't be identical to a Stream's).
+//
+// organizationId added as OPTIONAL/nullable — this is NOT confirmed
+// by the client. His Rule field list explicitly requires
+// organization_id, but he never said Program/Stream need it too.
+// Left nullable so nothing breaks either way; ask him directly
+// whether Program/Stream are also organization-scoped, or shared
+// globally with only Rules being org-specific.
+// ============================================================
+
+model Program {
+  id             String        @id @default(auto()) @map("_id") @db.ObjectId
+  organizationId String?       @db.ObjectId // UNCONFIRMED — see note above
+  name           String
+  country        String        @default("Canada")
+  province       String?
+  category       String?
+  description    String?
+  status         ProgramStatus @default(DRAFT)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  streams     Stream[]
+  assesment   Assesment? @relation(fields: [assesmentId], references: [id])
+  assesmentId String?    @db.ObjectId
+
+  @@index([status])
+  @@index([country, province])
+  @@index([organizationId])
+  @@map("programs")
+}
+
+// ============================================================
+// STREAM — field names/enum fixed to match client's confirmed spec:
+//   name -> streamName, province -> provinceRegion, added country,
+//   StreamStatus expanded to all 10 confirmed values.
+// mandatoryRules/scoringFactors relations replaced with single
+// `rules` relation, per doc 7's unified-table decision.
+// ============================================================
+
+model Stream {
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
+  organizationId String? @db.ObjectId // UNCONFIRMED — see Program note
+  programId      String  @db.ObjectId
+  program        Program @relation(fields: [programId], references: [id], onDelete: Cascade)
+
+  streamName      String
+  country         String           @default("Canada")
+  provinceRegion  String?
+  category        String?
+  status          StreamStatus     @default(ACTIVE)
+  visibility      StreamVisibility @default(PUBLIC)
+  priorityRanking Int              @default(0)
+  assessmentTypes AssessmentType[]
+
+  description    String?
+  publicSummary  String?
+  internalNotes  String?
+  processingTime String?
+
+  isPremiumOnly     Boolean @default(false)
+  showInFreeResults Boolean @default(false)
+  isArchived        Boolean @default(false)
+  isDisabled        Boolean @default(false)
+
+  // Display-only summaries (NOT computable logic — the actual rules
+  // that drive eligibility/scoring live on the Rule model below)
+  languageRequirementSummary       String?
+  educationRequirementSummary      String?
+  workExperienceRequirementSummary String?
+  jobOfferRequirementSummary       String?
+  settlementFundsSummary           String?
+  provinceConnectionSummary        String?
+  familyRelationshipRequirement    String?
+  crsRequirementSummary            String?
+
+  effectiveStartDate DateTime?
+  effectiveEndDate   DateTime?
+  lastReviewedDate   DateTime?
+  versionNumber      Int       @default(1)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  rules                   Rule[]
+  streamEvaluationResults StreamEvaluationResult[]
+
+  @@index([programId])
+  @@index([status, isArchived, isDisabled])
+  @@index([country, provinceRegion])
+  @@index([effectiveStartDate, effectiveEndDate])
+  @@index([organizationId])
+  @@map("streams")
+}
+
+// ============================================================
+// RULE — unified table per doc 7, section 11/12 (client's final
+// confirmation). Replaces the old MandatoryRule + ScoringFactor
+// split. rulePurpose distinguishes the two behaviors instead of
+// a boolean toggle. Field names below map directly to his
+// database field list (rule_id, stream_id, program_id,
+// organization_id, rule_name, rule_group, ... etc.)
+// ============================================================
+
+model Rule {
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
+  organizationId String? @db.ObjectId
+  streamId       String  @db.ObjectId
+  stream         Stream  @relation(fields: [streamId], references: [id], onDelete: Cascade)
+  // Denormalized for reporting per client's explicit request — kept
+  // in sync with stream.programId at write time, not a live relation.
+  programId      String  @db.ObjectId
+
+  // ---- A. Rule Identification ----
+  ruleName      String
+  ruleGroup     String?
+  ruleCategory  String // e.g. "language", "occupation", "work_experience" — admin-configurable, not enum
+  rulePurpose   RulePurpose
+  status        RuleStatus  @default(DRAFT)
+  priorityOrder Int         @default(0) // single priority field (client point 2)
+
+  // ---- B. Condition Logic ----
+  assessmentSection String?
+  questionId        String? // "Question ID / Data Field"
+  dataField         String?
+  dataType          QuestionInputType?
+  operator          RuleOperator
+  comparisonValue   String?
+  secondaryValue    String? // needed for BETWEEN
+
+  // ---- C. Mandatory Rule Settings (only when rulePurpose = MANDATORY_ELIGIBILITY_RULE) ----
+  failureResult             FailureResult?
+  missingRequirementMessage String?
+  furtherReviewRequired     Boolean        @default(false)
+
+  // ---- D. Scoring Settings (only when rulePurpose = SCORING_FACTOR) ----
+  weightPercentage   Float? // 0-100
+  maximumFactorScore Float?
+  scoringMethod      ScoringMethod?
+  scoreAwarded       Float? // static score for FIXED_SCORE/BOOLEAN_SCORE methods
+  scoringBands       Json? // for RANGE_BAND / LOOKUP_TABLE methods — shape TBD with client
+
+  // ---- E. Occupation Matching (separate linked table, not inline) ----
+  occupationCondition RuleOccupationCondition?
+
+  // ---- F. Recommendation Content ----
+  whyRecommended            String?
+  improvementRecommendation String?
+  nextSteps                 String?
+
+  // ---- G. Dates and Versioning ----
+  effectiveStartDate DateTime?
+  effectiveEndDate   DateTime?
+  doesNotExpire      Boolean   @default(false)
+  versionNumber      Int       @default(1)
+  changeNotes        String?
+
+  // ---- System-generated (never manually entered) ----
+  createdBy String?
+  updatedBy String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([streamId])
+  @@index([programId])
+  @@index([organizationId])
+  @@index([rulePurpose, status])
+  @@map("rules")
+}
+
+// ============================================================
+// RULE OCCUPATION CONDITION — separate linked table per client's
+// explicit preference (doc 7, section 11): "preferably in a
+// separate linked table ... prevents irrelevant occupation fields
+// from being stored on every rule." One-to-one with Rule; only
+// created when ruleCategory involves occupation/work-experience/NOC matching.
+// ============================================================
+
+model RuleOccupationCondition {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  ruleId String @unique @db.ObjectId
+  rule   Rule   @relation(fields: [ruleId], references: [id], onDelete: Cascade)
+
+  nocCode            String?
+  occupationName     String?
+  teer               Int?
+  occupationCategory String?
+  priorityOccupation Boolean?
+  matchType          OccupationMatchType?
+  includedNocList    String[]
+  excludedNocList    String[]
+
+  @@map("rule_occupation_conditions")
+}
+
+// ============================================================
+// STREAM EVALUATION RESULT — unchanged, matches doc section 12
+// structured output. Kept as-is.
+// ============================================================
+
+model StreamEvaluationResult {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  streamId    String @db.ObjectId
+  stream      Stream @relation(fields: [streamId], references: [id], onDelete: Cascade)
+  applicantId String
+
+  eligibilityStatus String
+  matchScore        Float
+
+  mandatoryPassCount Int
+  mandatoryTotal     Int
+
+  missingRequirements        String[]
+  improvementRecommendations String[]
+  strengths                  String[]
+
+  recommendationCategory String?
+  priorityRank           Int?
+
+  showInFreeResults Boolean @default(false)
+  showInPaidReport  Boolean @default(true)
+
+  createdAt DateTime @default(now())
+
+  @@index([streamId, applicantId])
+  @@index([applicantId, matchScore])
+}
+
+// ============================================================
+// ENUMS
+// ============================================================
+
+enum UserStatus {
+  Active
+  Blocked
+  Deleted
+}
+
+enum UserRole {
+  User
+  Admin
+  Manager
+  Staff
+  Consultant
+  SuperAdmin
+  Organization
+  OrganizationMember
+}
+
+enum Gender {
+  Male
+  Female
+  Other
+}
+
+enum QuestionInputType {
+  TEXT
+  NUMBER
+  SELECT
+  MULTI_SELECT
+  DATE
+  EMAIL
+  PHONE
+  BOOLEAN
+  TEXTAREA
+}
+
+enum ProgramStatus {
+  ACTIVE
+  DRAFT
+  PAUSED
+  ARCHIVED
+}
+
+enum StreamStatus {
+  ACTIVE
+  INACTIVE
+  COMING_SOON
+  OPEN
+  CLOSED
+  PAUSED
+  SUSPENDED
+  INTAKE_FULL
+  INVITATION_ONLY
+  ARCHIVED
+}
+
+enum StreamVisibility {
+  PUBLIC
+  HIDDEN
+  INTERNAL_ONLY
+  PREMIUM_ONLY
+  FREE_PREVIEW_ONLY
+}
+
+enum AssessmentType {
+  APPLY_FOR_PERMANENT_RESIDENCE
+  STUDY_IN_CANADA
+  WORK_IN_CANADA
+  JOIN_FAMILY_IN_CANADA
+}
+
+enum RulePurpose {
+  MANDATORY_ELIGIBILITY_RULE
+  SCORING_FACTOR
+}
+
+enum RuleStatus {
+  DRAFT
+  ACTIVE
+  INACTIVE
+  TESTING
+  ARCHIVED
+}
+
+enum RuleOperator {
+  EQUALS
+  NOT_EQUALS
+  GREATER_THAN
+  GREATER_THAN_OR_EQUAL
+  LESS_THAN
+  LESS_THAN_OR_EQUAL
+  BETWEEN
+  IN_LIST
+  NOT_IN_LIST
+  CONTAINS
+  NOT_CONTAINS
+  IS_TRUE
+  IS_FALSE
+  IS_EMPTY
+  IS_NOT_EMPTY
+}
+
+enum FailureResult {
+  NOT_ELIGIBLE
+  POTENTIALLY_ELIGIBLE
+  MISSING_REQUIREMENT
+  FURTHER_REVIEW_REQUIRED
+}
+
+enum SubmissionStatus {
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum ScoringMethod {
+  FIXED_SCORE
+  PERCENTAGE
+  RANGE_BAND
+  LOOKUP_TABLE
+  FORMULA
+  BOOLEAN_SCORE
+}
+
+enum OccupationMatchType {
+  EXACT_NOC
+  NOC_LIST
+  TEER_RANGE
+  BROAD_OCCUPATIONAL_CATEGORY
+  PRIORITY_OCCUPATION_LIST
+  EXCLUDED_OCCUPATION_LIST
+}
+
+//consultation related models
+
+model Consultation {
+  id               String             @id @default(auto()) @map("_id") @db.ObjectId
+  userId           String             @db.ObjectId
+  consultationType ConsultationType
+  consultationMode ConsultationMode
+  scheduledAt      DateTime
+  status           ConsultationStatus @default(CONFIRMED)
+  stripePaymentId  String
+  amountPaid       Float
+  teamsMeetingId   String?
+  teamsJoinUrl     String?
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  user             User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([scheduledAt])
+  @@index([status])
+}
+
+model ConsultationFee {
+  id                    String   @id @default(auto()) @map("_id") @db.ObjectId
+  phoneThirtyMinutesFee Float?
+  phoneOneHourFee       Float?
+  teamsThirtyMinutesFee Float?
+  teamsOneHourFee       Float?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
+
+enum ConsultationStatus {
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+  RESCHEDULED
+}
+
+enum ConsultationType {
+  THIRTY_MINUTES
+  ONE_HOUR
+}
+
+enum ConsultationMode {
+  PHONE
+  TEAMS
+}
